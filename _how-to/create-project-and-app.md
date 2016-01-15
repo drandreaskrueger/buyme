@@ -95,10 +95,13 @@ copy all files to linux VPS (TODO: git clone ...), then
 
 http://208.68.38.174:8000/buyme
 
-http://208.68.38.174:8000/buyme/hook/1111111111823472893/
 http://208.68.38.174:8000/admin
 
-curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/1111111111823472893/  
+http://208.68.38.174:8000/buyme/hook/1111111111823472893/
+
+
+curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/1111111111823472893/
+  
 curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/9999999911111263534/
 
 Of course - replace the 208.68.38.174 with *your IP address*.
