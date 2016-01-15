@@ -2,8 +2,8 @@
 # added by me:
 
 # API secret:
-configPrivate.py
-configPrivate_ME.py
+buyme/configPrivate.py
+buyme/configPrivate_ME.py
 
 # django
 db.sqlite3
