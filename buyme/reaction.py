@@ -19,7 +19,7 @@
 '''
 
 from config import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
-from config import DEBUG_MESSAGES
+from config import DEBUG_MESSAGES, PRODUCTION
 
 from django.core.mail import send_mail
 
@@ -36,7 +36,6 @@ def sendMail(recipient, subject, body):
                         recipient_list = [recipient],
                         auth_password=EMAIL_HOST_PASSWORD, auth_user = EMAIL_HOST_USER, 
                         fail_silently=False)
-    print result
     return result
   
   except Exception as e: 
@@ -60,6 +59,10 @@ def react_sendMeEmail(request, hookname, dbg=DEBUG_MESSAGES):
   body=pformat(body, indent=3) # pretty print
   
   subject="Coinbase checkout notification received on webhook %s" % hookname
+  if PRODUCTION:
+    subject="[REAL] "+subject
+  else:
+    subject="[TESTNET] "+subject
   
   return sendMail(EMAIL_ALERT_ME, subject, body)
   
