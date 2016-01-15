@@ -20,10 +20,9 @@
 
 from configPrivate import API_KEY, API_SECRET, EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
 
-VERSION="v03"
+VERSION="v05"
 
 SERVER_IP="208.68.38.174"
-APPNAME="buyme"
 
 HOOK1 = "9999999911111263534" # set when API key created https://sandbox.coinbase.com/settings/api
 HOOK2 = "1111111111823472893" # set in individual checkout. Looks as if it overwrites HOOK1 ?
@@ -41,6 +40,12 @@ PRODUCTS=[
 
 PRODUCTION=False
 DEBUG_MESSAGES=True
+
+######################################################
+# you probably do not want to change much below this. 
+######################################################
+
+APPNAME="buyme"
 
 SANDBOX_URLS = ('https://api.sandbox.coinbase.com', 'https://sandbox.coinbase.com')
 PRODUCTION_URLS=(      'https://api.coinbase.com' , 'https://coinbase.com')

@@ -46,7 +46,7 @@ Update, and install dependencies, and useful tools
 This prepares the system
 
     apt-get update && apt-get -y upgrade
-    apt-get install -y sudo python-pip nano git lynx tree
+    apt-get install -y sudo nano lynx tree screen python-pip git
     sudo pip install -U pip
     sudo pip install Django iptools requests jsonfield coinbase
     

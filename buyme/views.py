@@ -96,6 +96,7 @@ def thankYou_URL(request):
   answer+=printDictAsHtmlPRE(request.GET.dict())
   return HttpResponse(htmlBodyTags( answer ))
 
+
 def cancel_URL(request):
   """URL: cancel
   """

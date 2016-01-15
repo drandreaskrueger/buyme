@@ -74,6 +74,7 @@ def checkIPcorrect(IP, IPpattern=COINBASE_CORRECT_IP, dbg=DEBUG_MESSAGES):
     if dbg: print "'%s' is NOT a coinbase IP!" % IP
     return False
 
+
 def hook_storeCallbackDataIntoDatabase(request, hookname, trust):
   """Stores the whole answer into database. 
      Useful during the learning process.
