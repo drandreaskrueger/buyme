@@ -23,7 +23,7 @@ from config import DEBUG_MESSAGES
 
 from django.core.mail import send_mail
 
-import os, sys
+import os, sys, json
 from pprint import pformat
 
 def sendMail(recipient, subject, body):
@@ -56,7 +56,9 @@ def react_sendMeEmail(request, hookname, dbg=DEBUG_MESSAGES):
     if dbg: print "Email recipient not set. Not sending email."
     return False
   
-  body=pformat(request.body, indent=3) # pretty print
+  body = json.loads(request.body)
+  body=pformat(body, indent=3) # pretty print
+  
   subject="Coinbase checkout notification received on webhook %s" % hookname
   
   return sendMail(EMAIL_ALERT_ME, subject, body)
