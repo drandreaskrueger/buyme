@@ -192,11 +192,12 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
       newbuy=form.save()  # save to get a primary key which is later used to identify payment.
       metadata={"id": newbuy.id, "duration": duration}
       
-      presets=[p["price"] for p in PRODUCTS]
-      checkout=createCoinbaseCheckout(amount=price, metadata=metadata, amount_presets=presets) #, hook=HOOK2)
-      # checkout=createCoinbaseCheckout(amount=price, metadata=metadata) # if you do not want to give all choices again.
-      # print checkout
+      presets=[p["price"] for p in PRODUCTS] 
+      checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2, amount_presets=presets)
+      # if you do not want to give all choices again, omit amount_presets:
+      # checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2) # like this
       
+      # print checkout
       # TODO: How to check if creating the checkout succeeded? Probably this will throw an exception:
       embed_code=checkout["embed_code"]
       

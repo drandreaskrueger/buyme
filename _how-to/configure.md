@@ -15,8 +15,6 @@ To be able to create a 'checkout' via API:
 Then 
 * at https://sandbox.coinbase.com/settings/api --> *Create New API key*
   * with *permission*: ``wallet:checkouts:create``
-  * with *notifications* sent to the app hook: ``http://208.68.38.174:8000/buyme/hook/9999999911111263534/``  
-    (In my case. Change 208.68.38.174 to your IP.)
   * Create. Then 'show' the 'API Key details' 
 
 * --> ``API_KEY`` & ``API_SECRET`` into [configPrivate.py](../buyme/configPrivate.py) (that file is in .gitignore, so that it is not committed to git).
