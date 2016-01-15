@@ -149,7 +149,7 @@ def createCoinbaseCheckout(amount=59, metadata={"id": 42, "product" : "8 hours"}
     if dbg: print "Callback: Using notifications_url='%s' for callback." % notifications_url
     parameters["notifications_url"]=notifications_url
   else:
-    if dbg: print "Callback: using default from API-key definition."  
+    if dbg: print "Callback: using default from API-key definition."  ## Coinbase Bug: Not working
     
   checkout = client.create_checkout(**parameters)
   return checkout
