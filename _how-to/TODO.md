@@ -23,7 +23,7 @@ I would actually like to keep incoming money in a dedicated account. Please cons
 ## TODO me
 
 ### Security
-The file ``[configPrivate.py](../buyme/configPrivate.py)`` is not the ideal place for the API_SECRET, and the EMAIL_USER_PASSWORD.
+The file [configPrivate.py](../buyme/configPrivate.py) is not the ideal place for the API_SECRET, and the EMAIL_USER_PASSWORD.
 
 One problem is that it might accidentially get uploaded to git. I have already put it in .gitignore, but even then, it happened, somehow.  When you have input your own credentials, you can remove it from the git index:
  
@@ -31,10 +31,12 @@ One problem is that it might accidentially get uploaded to git. I have already p
     
 But that is not the final say in security. Where to best store sensitive data?
 
-### mispayments
+### Mispayments
 I tried to send to a checkout address many hours later. It worked! And it created a callback on my webhook!   
 
-But as The *wrong amount of money is sent to an address*, it is counted as 'mispayment', see [notification_mispayment.txt](notification_mispayment.txt) versus [notification_correctPayment.txt](notification_correctPayment.txt). TODO: Recognize that, and treat differently.
+But as The *wrong amount of money is sent to an address*, it is counted as 'mispayment', see [notification_mispayment.txt](notification_mispayment.txt) versus [notification_correctPayment.txt](notification_correctPayment.txt). 
+
+TODO: Recognize that, and treat differently.
 
 
 
