@@ -4,6 +4,7 @@
 # API secret:
 buyme/configPrivate.py
 buyme/configPrivate_ME.py
+buyme/configPrivate_EMPTY.py
 
 # django
 db.sqlite3
