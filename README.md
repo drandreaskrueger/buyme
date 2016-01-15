@@ -38,10 +38,10 @@ Open in browser (change to your IP address):
     
 
 ## more information:
-* [VPS](how-to/VPS.md) server 
-* [configure](configure.md) app
-* [create-project-and-app](create-project-and-app.md)) = how I created the django app (too much information)
-* [TODO](TODO.md) - for you, and me.
+* [VPS](_how-to/VPS.md) server 
+* [configure](_how-to/configure.md) app
+* [create-project-and-app](_how-to/create-project-and-app.md) = how I created the django app (too much information)
+* [TODO](_how-to/TODO.md) - for you, and me.
 * [LICENSE](LICENSE).
 
 ## structure:
