@@ -18,7 +18,7 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
-from configPrivate import API_KEY, API_SECRET
+from configPrivate import API_KEY, API_SECRET, EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
 
 VERSION="v03"
 

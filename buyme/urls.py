@@ -18,10 +18,10 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
-from django.conf.urls import include, url
-from django.contrib import admin
+from django.conf.urls import url
 
-from views import buy_URL, hook_URL, thankYou_URL, cancel_URL
+from views import buy_URL, thankYou_URL, cancel_URL
+from webhook import hook_URL
 
 urlpatterns = [
     # Examples:
