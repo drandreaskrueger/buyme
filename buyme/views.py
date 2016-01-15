@@ -69,16 +69,22 @@ def hook_storeCallbackDataIntoDatabase(request, hookname, trust):
 
 def hook_reactToTrustedCallbackData(request, hookname, dbg):
   """Here is where the magic happens!
-     email me, update the database with 'xyz has paid', etc.
+  
      Receiving the correct data on the hook can mean, 
-     that the customer has paid, and wants to be served.  
+     that the customer has paid, and wants to be served.
+     
+     So:
+     Email me, 
+     update the database with 'xyz has paid', 
+     suggest skype call dates already, 
+     etc.  
   """
   
-  # TODO
-  pass
-
   r=react_sendMeEmail(request, hookname, dbg)
-  if dbg: print "sending email result: %s" % r
+  if dbg: print "sending email successful: %s" % r
+  
+  # TODO: Many other reactions are possible.
+  pass
 
 
 @csrf_exempt  
@@ -100,10 +106,7 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES):
     #...............................................................
     # TODO: This block could be done in its own thread,
     # to be able to quickly answer back to Coinbase: (200, OK)
-    
-    
-    # if trust: hook_reactToTrustedCallbackData(request, hookname, dbg)
-    hook_reactToTrustedCallbackData(request, hookname, dbg)
+    if trust: hook_reactToTrustedCallbackData(request, hookname, dbg)
     #...............................................................
   
   answer="I got your message. Thanks."

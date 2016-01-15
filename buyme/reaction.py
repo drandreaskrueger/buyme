@@ -52,6 +52,10 @@ def react_sendMeEmail(request, hookname, dbg=DEBUG_MESSAGES):
         and include only that into the email body.
   """
 
+  if EMAIL_ALERT_ME=="":
+    if dbg: print "Email recipient not set. Not sending email."
+    return False
+  
   body=pformat(request.body, indent=3) # pretty print
   subject="Coinbase checkout notification received on webhook %s" % hookname
   
