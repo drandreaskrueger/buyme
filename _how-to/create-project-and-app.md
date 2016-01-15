@@ -63,7 +63,7 @@ or
 
     python manage.py runserver 0.0.0.0:8000
 
-### URLs to try:
+### URLs to try on localhost:
 #### localhost (for dev'ing in eclipse)
 
 GET:  
@@ -91,8 +91,7 @@ copy all files to linux VPS (TODO: git clone ...), then
 	python manage.py runserver 0.0.0.0:8000
 	
 	
-### URLs to try:
-#### cloud 
+### URLs in the cloud 
 
 http://208.68.38.174:8000/buyme
 
