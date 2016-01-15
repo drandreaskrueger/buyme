@@ -1,3 +1,25 @@
+
+# added by me:
+
+# API secret:
+buyme/configPrivate.py
+buyme/configPrivate_ME.py
+
+# django
+db.sqlite3
+static/djangosite
+buyme/migrations
+
+# eclipse
+.settings
+
+# these files are created by 'GFM Viewer'
+*.md.html 
+
+######################################################
+# all below was added by github when I chose 'Python'
+######################################################
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

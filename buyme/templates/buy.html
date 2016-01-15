@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Buy Time with an Expert in BitCoin, Blockchain, Cryptocurrencies</title>
+<style type="text/css">
+ul.errorlist {list-style-type: none; display:inline; margin-left: 0; padding-left: 0;}
+ul.errorlist li {display: inline; color:red; }
+.required { font-weight: bold; }
+form table tr td {vertical-align: top;}
+body {font-family:Verdana,Arial,sans-serif;}
+</style>
+</head>
+<body>
+{{pageheader | safe}}
+<h1>BuyMe</h1>
+<h2>Buy Time with an Expert in BitCoin, Blockchain, Cryptocurrencies.</h2>
+<p>We can SKYPE, I can CODE for you, RESEARCH your topics, ANALYZE your DATA, etc.
+<h3>This app ...</h3> 
+... is a <em>live example</em> how easily BITCOIN PAYMENTS can be in integrated in a website.<br/>
+{{linkToOtherVersion | safe}}</p>
+
+<p>
+How much of my time you want? Give an email address:
+</p>
+{% load staticfiles %}
+<form action="." method="post">
+    {% csrf_token %}
+
+	<table>
+	{% for field in form %}
+	    <tr><td>
+	    	{{ field.label_tag }}
+	    </td><td>
+	    	{{ field }}
+	    	
+	        {% if field.help_text %}
+	           <img src="{% static "buyme/clean3d-blue-015-icon.png" %}" 
+	                width=30 height=30 alt="icon_help"
+	                align=middle class="tooltip" title="{{ field.help_text }}"/>
+	        {% endif %}
+	    </td><td>
+	    	{{ field.errors }}
+	    </td></tr>
+	{% endfor %}
+	</table>
+
+	</p>Press 
+	<input type="submit" value="Submit" />
+to pay with Bitcoin. Then I'll get back to you.
+</form>
+
+<hr/>
+<div align="center"><small><a href="{{ base_url }}">{{ base_url }}</a></small></div>
+</body>
+</html>
