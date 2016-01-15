@@ -21,7 +21,7 @@
 
 from django.contrib import admin
 
-from models import hookInbox, newBuy
+from buyme.models import hookInbox, newBuy
 
 class hookInboxAdmin(admin.ModelAdmin):
   list_display = ('TRUST', 'id', 'dateCreated', 'meta', 'body', 'hookname')

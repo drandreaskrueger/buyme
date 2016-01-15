@@ -18,7 +18,7 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
-from config import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
+from configPrivate import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
 from config import DEBUG_MESSAGES
 
 from django.core.mail import send_mail
