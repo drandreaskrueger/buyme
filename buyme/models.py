@@ -27,7 +27,7 @@ from django.utils import timezone
 ## sudo pip install jsonfield
 from jsonfield import JSONField
 
-from buyme.config import PRODUCTS, CURRENCY, HOOKS
+from config import PRODUCTS, CURRENCY, HOOKS
 
 # the user choices for the product
 max_length_choice=max([len(p["name"]) for p in PRODUCTS])

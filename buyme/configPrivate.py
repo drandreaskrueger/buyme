@@ -15,5 +15,3 @@ EMAIL_ALERT_ME="" # if this is =="" then no email is sent.
 EMAIL_HOST_USER=""            # gmail username
 EMAIL_HOST_PASSWORD=""        # gmail password
 EMAIL_SENDER=EMAIL_HOST_USER
-
-
