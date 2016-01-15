@@ -31,7 +31,6 @@ urlpatterns = [
     # url(r'^$', 'buyme.views.home', name='home'),
     url(r'^$', buy_URL, name='buy'),
     url(r'^hook/(\d+)/$', hook_URL, name='hook'),
-    url(r'^hook/(\d+)$',  hook_URL, name='hook'),
     url(r'^thankyou/$', thankYou_URL, name='thankYou'),
     url(r'^cancel/$', cancel_URL, name='cancel'),
 ]
