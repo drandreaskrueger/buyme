@@ -39,6 +39,7 @@ admin.site.register(paid,paidAdmin)
 class paidInline(admin.TabularInline): # TabularInline # StackedInline
   model = paid
   fields= (  "status", "amount","amount_BTC", "tx", "dateCreated", "metadata")
+  readonly_fields= fields
 
 class newBuyAdmin(admin.ModelAdmin):
   inlines = [
