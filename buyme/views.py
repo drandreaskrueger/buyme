@@ -68,7 +68,7 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
       price = [ p["price"] for p in PRODUCTS if p["name"]==duration ] [0]
       
       newbuy=form.save()  # save to get a primary key which is later used to identify payment.
-      metadata={"id": newbuy.id, "date": newbuy.dateCreated, 
+      metadata={"id": newbuy.id, "date": "%s" % newbuy.dateCreated, 
                 "duration": duration, "price": "%s %s" % (price, CURRENCY)} # most important data into payment
       
       presets=None if not SHOW_ALL_PRICES_AGAIN else [p["price"] for p in PRODUCTS] 
