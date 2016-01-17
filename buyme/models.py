@@ -54,16 +54,7 @@ class hookInbox(models.Model):
   class Meta:
     app_label = APPNAME
 
-class paid(models.Model):
-  "for storing money data received via webhook"
-  dateCreated = models.DateTimeField('created', default = timezone.now)
-  newBuy_id = models.IntegerField() 
-  metadata=JSONField()
-  amount=models.CharField(max_length=AMOUNT_LENGTH)
-  amount_BTC=models.CharField(max_length=AMOUNT_BTC_LENGTH)
-  status=models.CharField(max_length=STATUS_LENGTH)
-  tx=models.CharField(max_length=TX_LENGTH)
-  
+
 
 class newBuy(models.Model):
   "for form for buying"
@@ -95,3 +86,20 @@ class newBuyForm(ModelForm):
                'skypename': forms.TextInput(attrs={'size': 30}),
                'message': forms.Textarea (attrs = {'cols':'31', 'rows':'3'} )}
     
+
+class paid(models.Model):
+  "for storing money data received via webhook"
+  dateCreated = models.DateTimeField('created', default = timezone.now)
+  
+  # newBuy_id = models.IntegerField() 
+  newBuy_id = models.ForeignKey(newBuy)
+  
+  metadata=JSONField()
+  amount=models.CharField(max_length=AMOUNT_LENGTH)
+  amount_BTC=models.CharField(max_length=AMOUNT_BTC_LENGTH)
+  status=models.CharField(max_length=STATUS_LENGTH)
+  tx=models.CharField(max_length=TX_LENGTH)
+  
+  # redundant, but lazy style, easier for admin pages:
+  # email     = models.EmailField(max_length=EMAILLENGTH, blank=False)
+  

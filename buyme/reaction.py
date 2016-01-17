@@ -25,7 +25,7 @@ if __name__ == "__main__":
 from config import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
 from config import DEBUG_MESSAGES, PRODUCTION
 from tools import amountCurrency
-from buyme.models import paid
+from buyme.models import paid, newBuy
 
 from django.core.mail import send_mail
 
@@ -41,8 +41,11 @@ def react_saveAsPaid(notif):
   p.status = notif['data']['resource']['status']
   p.newBuy_id = notif['data']['resource']['metadata']['id']
   p.metadata =  notif['data']['resource']['metadata']
-  # if more info needed, this can recover it:
-  p.tx = notif['data']['resource']['transaction']['id']  
+  # if more info needed, recover it by requesting this transaction:
+  p.tx = notif['data']['resource']['transaction']['id']
+  
+  # redundant, but lazy style, easier for admin pages:
+  # p.email = newBuy.objects.filter(id=p.newBuy_id) 
   p.save()
   
   return p

@@ -34,8 +34,15 @@ class newBuyAdmin(admin.ModelAdmin):
   
 admin.site.register(newBuy,newBuyAdmin)
 
+class newBuyInline(admin.StackedInline): # or TabularInline
+  model = newBuy
 
 class paidAdmin(admin.ModelAdmin):
+  
+  inlines = [
+        newBuyInline,
+    ]
+  
   list_display = (  'id', "amount","amount_BTC","status", "newBuy_id", "metadata", "tx", "dateCreated")
   
 admin.site.register(paid,paidAdmin)
