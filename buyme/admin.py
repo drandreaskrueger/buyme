@@ -32,12 +32,13 @@ class paidAdmin(admin.ModelAdmin):
   list_display = (  'id', "amount","amount_BTC","status", "newBuy_related", "metadata", "tx", "dateCreated")
   
   def newBuy_related(self, obj):
-        return obj.newBuy_related.id
+        return obj.NewBuy.id
   
 admin.site.register(paid,paidAdmin)
 
 class paidInline(admin.TabularInline): # TabularInline # StackedInline
   model = paid
+  fields= (  'id', "amount","amount_BTC","status", "newBuy_related", "metadata", "tx", "dateCreated")
 
 class newBuyAdmin(admin.ModelAdmin):
   inlines = [
