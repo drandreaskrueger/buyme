@@ -30,6 +30,7 @@ from reaction import react_saveAsPaid, react_sendMeEmail
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 
+import json
 import iptools  # pip install iptools
 
 
@@ -49,7 +50,7 @@ def hook_reactToTrustedCallbackData(request, hookname, dbg):
 
   # N.B.: Correspondence of metadata.id with primary key of form submission object 
   # [paid].metadata.id == [newBuy].id
-  p=react_saveAsPaid(request.body) 
+  p=react_saveAsPaid(json.loads(request.body)) 
   
   r=react_sendMeEmail(p, request, hookname, dbg) # so that I know that I got money :-)
   if dbg: print "sending email success = %s" % r
