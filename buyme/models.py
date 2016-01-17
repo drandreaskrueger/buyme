@@ -92,7 +92,6 @@ class paid(models.Model):
   "for storing money data received via webhook"
   dateCreated = models.DateTimeField('created', default = timezone.now)
   
-  # newBuy_id = models.IntegerField() 
   NewBuy = models.ForeignKey(newBuy)
   
   metadata=JSONField()

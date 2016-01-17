@@ -40,10 +40,9 @@ def react_saveAsPaid(notif):
   p.amount_BTC = amountCurrency (notif['data']['resource']['bitcoin_amount'])
   p.status = notif['data']['resource']['status']
   
-  
-  # p.newBuy_id = notif['data']['resource']['metadata']['id']
+  # Find the related buy-form-object, and set foreign key:   
   newBuy_id = notif['data']['resource']['metadata']['id']
-  p.newBuy_related = newBuy.objects.get(pk=newBuy_id)
+  p.NewBuy = newBuy.objects.get(pk=newBuy_id)
   
   p.metadata =  notif['data']['resource']['metadata']
   # if more info needed, recover it by requesting this transaction:
