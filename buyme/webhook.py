@@ -23,45 +23,14 @@ from config import HOOKS, METAKEYS # config for my app
 from config import DEBUG_MESSAGES
 
 from tools import htmlBodyTags
-from models import hookInbox, paid
+from models import hookInbox
 
-from reaction import react_saveAsPaid, react_sendMeEmail
+from reaction import reaction_toTrustedCallbackData # <-- called when all ok!
 
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 
-import json
 import iptools  # pip install iptools
-
-
-def hook_reactToTrustedCallbackData(request, hookname, dbg):
-  """Here is where the magic happens!
-  
-     Receiving the correct data on the hook can mean, 
-     that the customer has paid, and wants to be served.
-     
-     So:
-     Email me, 
-     update the database with 'xyz has paid',
-     email him, 
-     suggest skype call dates already, 
-     etc.  
-  """
-
-  # N.B.: Correspondence of metadata.id with primary key of form submission object 
-  # [paid].metadata.id == [newBuy].id
-  p=react_saveAsPaid(json.loads(request.body)) 
-  
-  r=react_sendMeEmail(p, request, hookname, dbg) # so that I know that I got money :-)
-  if dbg: print "sending email success = %s" % r
-  
-  # TODO: Many more reactions are possible.
-  #
-  # * send a confirmation to the customer
-  # * already suggest several dates for a first skype interview
-  # * etc. 
-  
-  pass
 
 
 def checkIPcorrect(IP, IPpattern=COINBASE_CORRECT_IP, dbg=DEBUG_MESSAGES):
@@ -111,7 +80,7 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES):
   if trust: 
     # TODO: Especially if more reactions are added, then this could be done in 
     # its own thread, to be able to quickly answer back to Coinbase: (200, OK)
-    hook_reactToTrustedCallbackData(request, hookname, dbg)
+    reaction_toTrustedCallbackData(request, hookname, dbg)
   
   return HttpResponse(htmlBodyTags( "Thanks." )) # (200, OK)
 

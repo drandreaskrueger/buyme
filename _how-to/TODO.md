@@ -41,6 +41,9 @@ Recognize that, and treat differently.
 
 EDIT: Mostly done. The ``notification.data.resource.status`` is saved into the 'paid' object (= 'expired' or 'paid'). So immediately visible.
 
+### Reactions
+When a payment is received a lot of actions can be triggered. 
+
 ### Finishing touch
 favicon.ico
 
