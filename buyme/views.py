@@ -92,7 +92,8 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
 def thankYou_URL(request):
   """URL: thankyou
   """
-  answer="This page gets called when the blue 'Return to ...' button is pressed after payment."
+  answer=PAGEHEADER
+  answer+="This page gets called when the blue 'Return to ...' button is pressed after payment."
 
   # TODO: Do some fancy reaction 'Hooray you have paid'.
   answer+="<h1>Thank you for your purchase:</h1>"
@@ -103,7 +104,9 @@ def thankYou_URL(request):
 def cancel_URL(request):
   """URL: cancel
   """
-  answer="This page gets called when the blue 'Return to ...' button is pressed there was no payment for 15 minutes."
+  
+  answer=PAGEHEADER
+  answer+="This page gets called when the blue 'Return to ...' button is pressed there was no payment for 15 minutes."
 
   # TODO: Do some fancy reaction 'You waited too long'.
   answer+="<h1>Checkout was cancelled:</h1>"
