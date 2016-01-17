@@ -93,7 +93,7 @@ class paid(models.Model):
   dateCreated = models.DateTimeField('created', default = timezone.now)
   
   # newBuy_id = models.IntegerField() 
-  newBuy_id = models.ForeignKey(newBuy)
+  newBuy_related = models.ForeignKey(newBuy)
   
   metadata=JSONField()
   amount=models.CharField(max_length=AMOUNT_LENGTH)

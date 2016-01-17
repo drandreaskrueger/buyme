@@ -39,7 +39,12 @@ def react_saveAsPaid(notif):
   p.amount = amountCurrency (notif['data']['resource']['amount'])
   p.amount_BTC = amountCurrency (notif['data']['resource']['bitcoin_amount'])
   p.status = notif['data']['resource']['status']
-  p.newBuy_id = notif['data']['resource']['metadata']['id']
+  
+  
+  # p.newBuy_id = notif['data']['resource']['metadata']['id']
+  newBuy_id = notif['data']['resource']['metadata']['id']
+  p.newBuy_related = newBuy.objects.get(pk=newBuy_id)
+  
   p.metadata =  notif['data']['resource']['metadata']
   # if more info needed, recover it by requesting this transaction:
   p.tx = notif['data']['resource']['transaction']['id']
