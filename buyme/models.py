@@ -65,6 +65,7 @@ class newBuy(models.Model):
   dateCreated = models.DateTimeField('created', default = timezone.now)
   duration  = models.CharField(max_length=max_length_choice, choices=choices)
   
+  
 class newBuyForm(ModelForm):
   "form for buying"
   error_css_class    = 'error'
