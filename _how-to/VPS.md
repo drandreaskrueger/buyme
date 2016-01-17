@@ -64,8 +64,5 @@ This is a proof of concept project only. If you want to use this in production, 
 
 * running the django app with [uWSGI](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-14-04) behind an [nginx webserver](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-8).
 * closing the access with a firewall with e.g. [iptables](https://www.digitalocean.com/community/tutorials/how-the-iptables-firewall-works).
-* coding more, and better [reactions](../buyme/reaction.py) to when your client has paid you, e.g. 
-  * email confirmation, 
-  * automatic scheduler, 
-  * etc.
+* coding more, and better [reactions](../buyme/reaction.py) to when your client has paid you, see [TODO.md](TODO.md).
   

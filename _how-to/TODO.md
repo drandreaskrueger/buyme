@@ -12,11 +12,11 @@ I solve it by setting individual notifications when creating the callback.
 Perhaps this influences the default callback, so that the above default notification stops working? Dunno.
 
 ### checkout money into dedicated account (feature request)
-When a [checkout is created](https://developers.coinbase.com/api/v2#create-checkout) the money always ends up in the primary account:
+When a [checkout is created](https://developers.coinbase.com/api/v2#create-checkout) the money always ends up in the *primary account*:
 
-> All checkouts and subsequent orders created using this endpoint are created for merchant’s primary account.
+> All checkouts and subsequent orders created using this endpoint are created for merchant's primary account.
 
-I would actually like to keep incoming money in a dedicated account. Please consider to open your concept to that. Thanks.
+I'd like it better to keep incoming money in one *dedicated account* **per app**. Please consider to open your concept to that. Thanks.
  
 
   
@@ -35,11 +35,11 @@ But that is not the final say in security. Where to best store sensitive data?
 ### Mispayments
 I tried to send to a checkout address many hours later. It worked! And it created a callback on my webhook!   
 
-But as The *wrong amount of money is sent to an address*, it is counted as 'mispayment', see [notification_mispayment.txt](notification_mispayment.txt) versus [notification_correctPayment.txt](notification_correctPayment.txt). 
+But as The *wrong amount of money is sent to an address*, it is counted as 'mispayment', see [output/notification_mispayment.email.txt](output/notification_mispayment.email.txt) versus [output/notification_correctPayment.email.txt](output/notification_correctPayment.email.txt). 
 
-TODO: Recognize that, and treat differently.
+Recognize that, and treat differently.
 
-
+EDIT: Mostly done. The ``notification.data.resource.status`` is saved into the 'paid' object (= 'expired' or 'paid'). So immediately visible.
 
 ### Finishing touch
 favicon.ico

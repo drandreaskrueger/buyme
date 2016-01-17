@@ -100,8 +100,8 @@ http://208.68.38.174:8000/admin
 http://208.68.38.174:8000/buyme/hook/0000000139798743472/
 
 
-curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/0000000139798743472/
-curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/5555555555555555555/
+    curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/0000000139798743472/  
+    curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/5555555555555555555/
   
 Of course - replace the 208.68.38.174 with *your IP address*.
 

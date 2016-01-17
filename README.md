@@ -1,9 +1,9 @@
 # buyme
 Coinbase payments made easy.
 
-Django app to buy time, with BTC payments.
+Django app to buy time with BTC payments.
 
-= Learning how to properly include **Coinbase checkouts**.
+= Learning how to properly include **Coinbase checkouts**, incl. reacting to webhook callback data. 
 
 ## quickstart
 
