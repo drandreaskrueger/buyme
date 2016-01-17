@@ -42,9 +42,8 @@ Recognize that, and treat differently.
 EDIT: Mostly done. The ``notification.data.resource.status`` is saved into the 'paid' object (= 'expired' or 'paid'). So immediately visible.
 
 ### Reactions
-When a payment is received a lot of actions can be triggered. 
+When a payment is received a lot of additional actions can be triggered. See [reaction.py](https://github.com/drandreaskrueger/buyme/blob/master/buyme/reaction.py#L107-L132).
 
 ### Finishing touch
 favicon.ico
-
 
