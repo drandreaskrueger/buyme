@@ -44,9 +44,9 @@ class newBuyAdmin(admin.ModelAdmin):
         paidInline,
   ]
 
-  list_display = (  'id', "email","skypename","message","dateCreated","duration", "paids")
+  list_display = (  'id', "paids", "email","skypename","message","dateCreated","duration")
   
   def paids(self, obj):
-    return obj.newbuy_set.count() # counts the number of foreign_key objects point here
+    return obj.paid_set.count() # counts the number of foreign_key objects point here
   
 admin.site.register(newBuy,newBuyAdmin)
