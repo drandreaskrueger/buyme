@@ -45,6 +45,7 @@ class newBuyAdmin(admin.ModelAdmin):
   ]
 
   list_display = (  'id', "email","skypename","message","dateCreated","duration", "paids")
+  
   def paids(self, obj):
     return obj.newbuy_set.count() # counts the number of foreign_key objects point here
   
