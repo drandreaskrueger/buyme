@@ -35,7 +35,7 @@ But that is not the final say in security. Where to best store sensitive data?
 ### Mispayments
 I tried to send to a checkout address many hours later. It worked! And it created a callback on my webhook!   
 
-But as The *wrong amount of money is sent to an address*, it is counted as 'mispayment', see [output/notification_mispayment.email.txt](output/notification_mispayment.email.txt) versus [output/notification_correctPayment.email.txt](output/notification_correctPayment.email.txt). 
+But as The *wrong amount of money is sent to an address*, it is counted as 'mispayment', see [notification_mispayment.email.txt](../output/notification_mispayment.email.txt) versus [notification_correctPayment.email.txt](../output/notification_correctPayment.email.txt). 
 
 Recognize that, and treat differently.
 
