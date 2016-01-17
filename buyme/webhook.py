@@ -23,9 +23,9 @@ from config import HOOKS, METAKEYS # config for my app
 from config import DEBUG_MESSAGES
 
 from tools import htmlBodyTags
-from models import hookInbox
+from models import hookInbox, paid
 
-from reaction import react_sendMeEmail
+from reaction import react_saveAsPaid, react_sendMeEmail
 
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
@@ -46,23 +46,21 @@ def hook_reactToTrustedCallbackData(request, hookname, dbg):
      suggest skype call dates already, 
      etc.  
   """
+
+  # N.B.: Correspondence of metadata.id with primary key of form submission object 
+  # [paid].metadata.id == [newBuy].id
+  p=react_saveAsPaid(request.body) 
   
-  r=react_sendMeEmail(request, hookname, dbg) # so that I know that I got money :-)
+  r=react_sendMeEmail(p, request, hookname, dbg) # so that I know that I got money :-)
   if dbg: print "sending email success = %s" % r
   
   # TODO: Many more reactions are possible.
-  #
-  # * identify the entry with the 'id' that is already in the database table 'newBuy'
-  #   with  notification callback result --> data.resource.metadata.id
-  #   and set it to paid, and how much, and for how many minutes, etc.
   #
   # * send a confirmation to the customer
   # * already suggest several dates for a first skype interview
   # * etc. 
   
   pass
-
-
 
 
 def checkIPcorrect(IP, IPpattern=COINBASE_CORRECT_IP, dbg=DEBUG_MESSAGES):
@@ -77,7 +75,7 @@ def checkIPcorrect(IP, IPpattern=COINBASE_CORRECT_IP, dbg=DEBUG_MESSAGES):
 
 def hook_storeCallbackDataIntoDatabase(request, hookname, trust):
   """Stores the whole answer into database. 
-     Useful during the learning process.
+     Useful during the learning process, but creates much data.
   """
   hooked=hookInbox()
   hooked.hookname=hookname # to distinguish where from it got sent.
@@ -88,7 +86,6 @@ def hook_storeCallbackDataIntoDatabase(request, hookname, trust):
   hooked.body=request.body 
   
   hooked.save()
-  
   
 
 @csrf_exempt  
@@ -106,12 +103,13 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES):
   # Did it from Coinbase?
   trust=checkIPcorrect(request.META['REMOTE_ADDR'])
    
-  # Store all. Later switch off? Or select and reduce?
+  # Store all. Regardless. Later switch off? 
   hook_storeCallbackDataIntoDatabase(request, hookname, trust) 
 
-  # TODO: Especially if more reactions are added, then this could be done in 
-  # its own thread, to be able to quickly answer back to Coinbase: (200, OK)
+  # If the notification is really coming from coinbase, do fancy stuff:
   if trust: 
+    # TODO: Especially if more reactions are added, then this could be done in 
+    # its own thread, to be able to quickly answer back to Coinbase: (200, OK)
     hook_reactToTrustedCallbackData(request, hookname, dbg)
   
   return HttpResponse(htmlBodyTags( "Thanks." )) # (200, OK)

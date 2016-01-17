@@ -36,7 +36,7 @@ PRODUCTS=[
           {"name": "4 hours", "price" : 200},
           {"name": "1 day", "price" : 349},
           ]
-
+SHOW_ALL_PRICES_AGAIN = True # True to show all these prices again in coinbase checkout dialogue 
 
 PRODUCTION=False
 DEBUG_MESSAGES=True

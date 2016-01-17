@@ -21,7 +21,7 @@
 '''
 
 from config import WWW_URL
-from config import PRODUCTS, SERVER, APPNAME, HOOK2 # config for my app
+from config import PRODUCTS, CURRENCY, SHOW_ALL_PRICES_AGAIN, SERVER, APPNAME, HOOK2 # config for my app
 from config import PAGEHEADER, OTHER_VERSION_HTML # HTML snippets for mainnet <-> testnet
 from config import DEBUG_MESSAGES
 from tools import htmlBodyTags, printDictAsHtmlPRE
@@ -68,12 +68,11 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
       price = [ p["price"] for p in PRODUCTS if p["name"]==duration ] [0]
       
       newbuy=form.save()  # save to get a primary key which is later used to identify payment.
-      metadata={"id": newbuy.id, "duration": duration}
+      metadata={"id": newbuy.id, "date": newbuy.dateCreated, 
+                "duration": duration, "price": "%s %s" % (price, CURRENCY)} # most important data into payment
       
-      presets=[p["price"] for p in PRODUCTS] 
+      presets=None if not SHOW_ALL_PRICES_AGAIN else [p["price"] for p in PRODUCTS] 
       checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2, amount_presets=presets)
-      # if you do not want to give all choices again, omit amount_presets:
-      # checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2) # like this
       
       # print checkout
       # TODO: How to check if creating the checkout succeeded? Probably this will throw an exception:

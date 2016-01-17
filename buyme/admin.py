@@ -21,7 +21,7 @@
 
 from django.contrib import admin
 
-from models import hookInbox, newBuy
+from models import hookInbox, newBuy, paid
 
 class hookInboxAdmin(admin.ModelAdmin):
   list_display = ('TRUST', 'id', 'dateCreated', 'meta', 'body', 'hookname')
@@ -33,3 +33,9 @@ class newBuyAdmin(admin.ModelAdmin):
   list_display = (  'id', "email","skypename","message","dateCreated","duration")
   
 admin.site.register(newBuy,newBuyAdmin)
+
+
+class paidAdmin(admin.ModelAdmin):
+  list_display = (  'id', "amount","amount_BTC","status", "newBuy_id", "metadata", "tx", "dateCreated")
+  
+admin.site.register(paid,paidAdmin)

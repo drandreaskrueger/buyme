@@ -27,7 +27,7 @@ from django.utils import timezone
 ## sudo pip install jsonfield
 from jsonfield import JSONField
 
-from config import PRODUCTS, CURRENCY, HOOKS
+from config import PRODUCTS, CURRENCY, HOOKS, APPNAME
 
 # the user choices for the product
 max_length_choice=max([len(p["name"]) for p in PRODUCTS])
@@ -36,6 +36,11 @@ choices=[(p["name"], "%s (%s %s)" % (p["name"],p["price"],CURRENCY) ) for p in P
 EMAILLENGTH=254
 SKYPENAMELENGTH=32
 MESSAGELENGTH=1000
+
+AMOUNT_LENGTH = 16    # "999999999.00 VND"
+AMOUNT_BTC_LENGTH = 16 # "999.12345678 BTC"
+STATUS_LENGTH =7 # # "expired", "paid"
+TX_LENGTH = 36 # "616124b5-db6f-5038-99a5-196aec516ec8"
 
 HOOKNAMELENGTH=max([len(h) for h in HOOKS])
 
@@ -46,6 +51,19 @@ class hookInbox(models.Model):
   meta = JSONField() 
   hookname = models.CharField(max_length=HOOKNAMELENGTH)
   TRUST = models.BooleanField(default=True)
+  class Meta:
+    app_label = APPNAME
+
+class paid(models.Model):
+  "for storing money data received via webhook"
+  dateCreated = models.DateTimeField('created', default = timezone.now)
+  newBuy_id = models.IntegerField() 
+  metadata=JSONField()
+  amount=models.CharField(max_length=AMOUNT_LENGTH)
+  amount_BTC=models.CharField(max_length=AMOUNT_BTC_LENGTH)
+  status=models.CharField(max_length=STATUS_LENGTH)
+  tx=models.CharField(max_length=TX_LENGTH)
+  
 
 class newBuy(models.Model):
   "for form for buying"
@@ -76,5 +94,4 @@ class newBuyForm(ModelForm):
     widgets = {'email': forms.TextInput(attrs={'size': 30}),
                'skypename': forms.TextInput(attrs={'size': 30}),
                'message': forms.Textarea (attrs = {'cols':'31', 'rows':'3'} )}
-    
     

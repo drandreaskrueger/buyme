@@ -18,13 +18,35 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
+if __name__ == "__main__": 
+  from tools import settings_hack
+  settings_hack()
+
 from config import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
 from config import DEBUG_MESSAGES, PRODUCTION
+from tools import amountCurrency
+from buyme.models import paid
 
 from django.core.mail import send_mail
 
-import os, sys, json
+import os, json
 from pprint import pformat
+
+
+def react_saveAsPaid(notif):
+  "extracts most useful payment data from notification, and stores into DB"
+  p = paid()
+  p.amount = amountCurrency (notif['data']['resource']['amount'])
+  p.amount_BTC = amountCurrency (notif['data']['resource']['bitcoin_amount'])
+  p.status = notif['data']['resource']['status']
+  p.newBuy_id = notif['data']['resource']['metadata']['id']
+  p.metadata =  notif['data']['resource']['metadata']
+  # if more info needed, this can recover it:
+  p.tx = notif['data']['resource']['transaction']['id']  
+  p.save()
+  
+  return p
+
 
 def sendMail(recipient, subject, body):
   """
@@ -43,20 +65,26 @@ def sendMail(recipient, subject, body):
     return False
 
 
-def react_sendMeEmail(request, hookname, dbg=DEBUG_MESSAGES):
+def react_sendMeEmail(p, request, hookname, dbg=DEBUG_MESSAGES):
   """
   When a notification on a webhook is received, alert me by email.
   
   TODO: Extract useful information from the notification, 
-        and include only that into the email body.
+        and include _only_that_ into the email body.
   """
 
   if EMAIL_ALERT_ME=="":
     if dbg: print "Email recipient not set. Not sending email."
     return False
   
+  # most important data
+  paid = pformat (p, indent=3)
+  
+  # whole notification
   body = json.loads(request.body)
-  body=pformat(body, indent=3) # pretty print
+  body = pformat(body, indent=3) # pretty print
+  
+  body = paid + "\n" + "-" * 40 + "\n" + body
   
   subject="Coinbase checkout notification received on webhook %s" % hookname
   if PRODUCTION:
@@ -67,23 +95,25 @@ def react_sendMeEmail(request, hookname, dbg=DEBUG_MESSAGES):
   return sendMail(EMAIL_ALERT_ME, subject, body)
   
 
+
 # testing:
 
-def settings_hack():
-  """
-  If this file is called directly (and not through runserver), then 
-  the djangoproject.settings cannot be found. This hack fixes that.
-  """
-  root_path = os.path.dirname(__file__)
-  root_path = os.path.dirname(root_path) # one up
-  sys.path.insert(0, root_path)
+def test_react_saveAsPaid():
+  for filename in ("notification_correctPayment.txt", "notification_mispayment.txt"):
+    with open(os.path.join("..","output",filename), "r") as f:
+      text=f.read()
+    notif = json.loads(text)
+    p=react_saveAsPaid(notif)
+    print p.id, type(p.id)
+
 
 def test_sendMail():
-  settings_hack()
   print sendMail(EMAIL_ALERT_ME, "test-subject", "test-body")
 
   
 if __name__ == "__main__":
-  test_sendMail()
+  settings_hack()
+  # test_sendMail()
+  test_react_saveAsPaid()
   
   
