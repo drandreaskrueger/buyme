@@ -64,7 +64,7 @@ def hook_storeCallbackDataIntoDatabase(request, hookname, trust):
 def hook_URL(request, hookname, dbg=DEBUG_MESSAGES):
   "URL: receiving webhook, to digest Coinbase answers."
   
-  if dbg: print "Received request on 'hook/name' : ", hookname, type(hookname)
+  if dbg: print "Received %s request on 'hook/name' : %s" %(request.method, hookname)
   
   if (hookname not in HOOKS) or (request.method != 'POST'):
     answer="How dare you fiddle around here. Go away."
