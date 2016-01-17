@@ -31,9 +31,12 @@ admin.site.register(hookInbox, hookInboxAdmin)
 class paidAdmin(admin.ModelAdmin):
   list_display = (  'id', "amount","amount_BTC","status", "newBuy_related", "metadata", "tx", "dateCreated")
   
+  def newBuy_related(self, obj):
+        return obj.newBuy_related.id
+  
 admin.site.register(paid,paidAdmin)
 
-class paidInline(admin.StackedInline): # or TabularInline
+class paidInline(admin.TabularInline): # TabularInline # StackedInline
   model = paid
 
 class newBuyAdmin(admin.ModelAdmin):
