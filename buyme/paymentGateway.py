@@ -19,8 +19,9 @@
 '''
 
 from config import API_KEY, API_SECRET, API_URL # config for coinbase
+from config import PRODUCTNAME, PRODUCTDESCRIPTION
 from config import CURRENCY, SERVER, APPNAME # config for my app
-from config import DEBUG_MESSAGES
+from config import DEBUG_MESSAGES, PRODUCTNAME
 
 from coinbase.wallet.client import Client
 
@@ -41,8 +42,8 @@ def createCoinbaseCheckout(amount=59, metadata={"id": 42, "product" : "8 hours"}
   
   parameters={ "amount": "%.2f" % amount,
                "currency": CURRENCY,
-               "name": "Time with a BitCoin Expert",
-               "description": "Buy time, and I skype with you.",
+               "name": PRODUCTNAME,
+               "description": PRODUCTDESCRIPTION,
                "type": "order",
                "style": "buy_now_large",
                "customer_defined_amount": "false",

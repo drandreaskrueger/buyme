@@ -27,11 +27,11 @@ from django.utils import timezone
 ## sudo pip install jsonfield
 from jsonfield import JSONField
 
-from config import PRODUCTS, CURRENCY, HOOKS, APPNAME
+from config import CHOICES, CURRENCY, HOOKS, APPNAME
 
 # the user choices for the product
-max_length_choice=max([len(p["name"]) for p in PRODUCTS])
-choices=[(p["name"], "%s (%s %s)" % (p["name"],p["price"],CURRENCY) ) for p in PRODUCTS]
+max_length_choice=max([len(p["name"]) for p in CHOICES])
+choices=[(p["name"], "%s (%s %s)" % (p["name"],p["price"],CURRENCY) ) for p in CHOICES]
 
 EMAILLENGTH=254
 SKYPENAMELENGTH=32
@@ -82,7 +82,7 @@ class newBuyForm(ModelForm):
                 'skypename':'Get a skype name at login.skype.com/join (only *-fields have to be filled in).',
                 'duration':'Try to estimate how much time you need. The longer the cheaper it gets.',
                 'message':'Perhaps already give me an idea what you want to talk about.'}
-    choices=[(p["name"],p["name"]) for p in PRODUCTS]
+    choices=[(p["name"],p["name"]) for p in CHOICES]
     widgets = {'email': forms.TextInput(attrs={'size': 30}),
                'skypename': forms.TextInput(attrs={'size': 30}),
                'message': forms.Textarea (attrs = {'cols':'31', 'rows':'3'} )}

@@ -21,7 +21,8 @@
 '''
 
 from config import WWW_URL
-from config import PRODUCTS, CURRENCY, SHOW_ALL_PRICES_AGAIN, SERVER, APPNAME, HOOK2 # config for my app
+from config import PRODUCTNAME, PRODUCTDESCRIPTION, CHOICES, CURRENCY, SHOW_ALL_PRICES_AGAIN 
+from config import SERVER, APPNAME, HOOK2 # config for my app
 from config import PAGEHEADER, OTHER_VERSION_HTML # HTML snippets for mainnet <-> testnet
 from config import DEBUG_MESSAGES
 from tools import htmlBodyTags, printDictAsHtmlPRE
@@ -39,6 +40,8 @@ def renderBuyForm(request, form):
   return render(request, 'buy.html', {'form': form,
                                       'base_url': SERVER+"/"+APPNAME,
                                       'pageheader': PAGEHEADER,
+                                      'productname': PRODUCTNAME,
+                                      'productdescription': PRODUCTDESCRIPTION,
                                       'linkToOtherVersion': OTHER_VERSION_HTML})
 
 def buy_URL(request, dbg=DEBUG_MESSAGES):
@@ -66,13 +69,13 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
       if dbg: print "Valid. Taking form entries, and creating a coinbase checkout."
       email  = form.cleaned_data['email']
       duration  = form.cleaned_data['duration']
-      price = [ p["price"] for p in PRODUCTS if p["name"]==duration ] [0] # take first!
+      price = [ p["price"] for p in CHOICES if p["name"]==duration ] [0] # take first!
       
       newbuy=form.save()  # primary key can later be used to identify (paid --> newbuy)
       metadata={"id": newbuy.id, 
                 "duration": duration, "price": "%s %s" % (price, CURRENCY)} # most important data into payment
       
-      presets=None if not SHOW_ALL_PRICES_AGAIN else [p["price"] for p in PRODUCTS] 
+      presets=None if not SHOW_ALL_PRICES_AGAIN else [p["price"] for p in CHOICES] 
       checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2, amount_presets=presets)
       
       # print checkout

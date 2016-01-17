@@ -28,8 +28,11 @@ HOOK1 = "9999999911111263534" # set when API key created https://sandbox.coinbas
 HOOK2 = "1111111111823472893" # set in individual checkout. Looks as if it overwrites HOOK1 ?
 HOOKS = (HOOK1, HOOK2) # TODO: automatic process, with individualized obfuscated hook names
 
+PRODUCTNAME="Buy Time with a Specialist in Cryptocurrencies."
+PRODUCTDESCRIPTION="Let us SKYPE: I can CODE for you, RESEARCH your topics, ANALYZE your DATA, etc."
+
 CURRENCY="USD"
-PRODUCTS=[
+CHOICES=[
           {"name": "5 minutes", "price" : 9},
           {"name": "15 minutes", "price" : 19},
           {"name": "1 hour", "price" : 60},
