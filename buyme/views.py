@@ -68,12 +68,11 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
     else: # form entries are valid, hooray :-)
       
       if dbg: print "Valid. Taking form entries, and creating a coinbase checkout."
-      email  = form.cleaned_data['email']
       duration  = form.cleaned_data['duration']
       price = [ p["price"] for p in CHOICES if p["name"]==duration ] [0] # take first!
       
-      newbuy=form.save()  # primary key can later be used to identify (paid --> newbuy)
-      metadata={"id": newbuy.id, 
+      newbuy=form.save()  
+      metadata={"id": newbuy.id, # primary key can later be used to identify (paid --> newbuy) 
                 "duration": duration, "price": "%s %s" % (price, CURRENCY)} # most important data into payment
       
       presets=None if not SHOW_ALL_PRICES_AGAIN else [p["price"] for p in CHOICES] 
