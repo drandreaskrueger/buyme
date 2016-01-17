@@ -20,9 +20,9 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
-from config import WWW_URL
+from config import API_FRONTEND_URL
 from config import PRODUCTNAME, PRODUCTDESCRIPTION, CHOICES, CURRENCY, SHOW_ALL_PRICES_AGAIN 
-from config import SERVER, APPNAME, HOOK2 # config for my app
+from config import VERSION, SERVER, APPNAME, HOOK2 # config for my app
 from config import PAGEHEADER, OTHER_VERSION_HTML # HTML snippets for mainnet <-> testnet
 from config import DEBUG_MESSAGES
 from tools import htmlBodyTags, printDictAsHtmlPRE
@@ -42,7 +42,8 @@ def renderBuyForm(request, form):
                                       'pageheader': PAGEHEADER,
                                       'productname': PRODUCTNAME,
                                       'productdescription': PRODUCTDESCRIPTION,
-                                      'linkToOtherVersion': OTHER_VERSION_HTML})
+                                      'linkToOtherVersion': OTHER_VERSION_HTML,
+                                      'version' : VERSION})
 
 def buy_URL(request, dbg=DEBUG_MESSAGES):
   """URL: webpage with form.
@@ -82,7 +83,7 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
       # TODO: How to check if creating the checkout succeeded? Probably this will throw an exception:
       embed_code=checkout["embed_code"]
       
-      payment_url='%s/checkouts/%s' % (WWW_URL, embed_code)
+      payment_url='%s/checkouts/%s' % (API_FRONTEND_URL, embed_code)
       if dbg: print "redirecting to coinbase: %s" % payment_url 
       
       return redirect(payment_url)

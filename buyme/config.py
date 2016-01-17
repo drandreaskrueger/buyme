@@ -52,7 +52,7 @@ APPNAME="buyme"
 
 SANDBOX_URLS = ('https://api.sandbox.coinbase.com', 'https://sandbox.coinbase.com')
 PRODUCTION_URLS=(      'https://api.coinbase.com' , 'https://coinbase.com')
-API_URL,WWW_URL=PRODUCTION_URLS if PRODUCTION else SANDBOX_URLS 
+API_BACKEND_URL,API_FRONTEND_URL=PRODUCTION_URLS if PRODUCTION else SANDBOX_URLS 
 
 COINBASE_CORRECT_IP="54.175.255.192/27"
 

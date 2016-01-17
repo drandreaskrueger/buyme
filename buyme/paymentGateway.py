@@ -18,7 +18,7 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
-from config import API_KEY, API_SECRET, API_URL # config for coinbase
+from config import API_KEY, API_SECRET, API_BACKEND_URL # config for coinbase
 from config import PRODUCTNAME, PRODUCTDESCRIPTION
 from config import CURRENCY, SERVER, APPNAME # config for my app
 from config import DEBUG_MESSAGES, PRODUCTNAME
@@ -34,7 +34,7 @@ def createCoinbaseCheckout(amount=59, metadata={"id": 42, "product" : "8 hours"}
      and be given an 'embed_code'
   """
   
-  client = Client(API_KEY, API_SECRET, base_api_uri=API_URL)
+  client = Client(API_KEY, API_SECRET, base_api_uri=API_BACKEND_URL)
   
   # ONLY called if the customer presses the "Back to ..." button after payment
   success_url="%s/%s/thankyou/" % (SERVER, APPNAME) # after successful payment
