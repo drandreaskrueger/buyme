@@ -4,7 +4,7 @@
 
 ### Default webhook not working (bug?)
 
-When the API key is created, the default *notifications* set there, sent to my app hook: ``http://208.68.38.174:8000/buyme/hook/9999999911111263534/`` ...  
+When the API key is created, the default *notifications* set there, sent to my app hook: ``http://208.68.38.174:8000/buyme/hook/0000000139798743472/`` ...  
 ... just doesn't work. It never gets called.
 
 I solve it by setting individual notifications when creating the callback.

@@ -24,10 +24,6 @@ VERSION="v06"
 
 SERVER_IP="208.68.38.174"
 
-HOOK1 = "9999999911111263534" # set when API key created https://sandbox.coinbase.com/settings/api
-HOOK2 = "1111111111823472893" # set in individual checkout. Looks as if it overwrites HOOK1 ?
-HOOKS = (HOOK1, HOOK2) # TODO: automatic process, with individualized obfuscated hook names
-
 PRODUCTNAME="Buy Time with a Specialist in Cryptocurrencies."
 PRODUCTDESCRIPTION="Let us SKYPE: I can CODE for you, RESEARCH your topics, ANALYZE your DATA, etc."
 
@@ -43,6 +39,11 @@ SHOW_ALL_PRICES_AGAIN = True # True to show all these prices again in coinbase c
 
 PRODUCTION=False
 DEBUG_MESSAGES=True
+
+# TODO: automatic process, with individualized obfuscated hook names. Until then, change manually:
+HOOK1 = "0000000139798743472" # set when API key created https://sandbox.coinbase.com/settings/api
+HOOK2 = "9999999345354234744" # set in individual checkout. Only this seems to work, the above not. 
+HOOKS = (HOOK1, HOOK2) 
 
 ######################################################
 # you probably do not want to change much below this. 
