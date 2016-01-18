@@ -47,7 +47,7 @@ But it is counted as 'mispayment' (probably similar to if the *wrong amount of m
 EDIT: Mostly done: Code recognizes that, and treats it differently. The ``notification.data.resource.status`` is saved into the 'paid' object (= 'expired' or 'paid'), and put into the email. So it is immediately visible.
 
 ### Reactions
-When a payment is received a lot of additional actions can be triggered. See [reactions.py](../buyme/reactions.py#L107-L132).
+When a payment is received a lot of additional actions can be triggered. See [reactions.ifTrustedCallbackData()](https://github.com/drandreaskrueger/buyme/blob/6499887c2b52d1bb7b8b04d6d68f5db574a50c60/buyme/reactions.py#L113-L138).
 
 ### Finishing touch
 favicon.ico
