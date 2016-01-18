@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ab%z5!cfg$x=!(-tttttt*=-8@$m=@t)@=erterr13^g^1*ee('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -124,6 +124,7 @@ INSTALLED_APPS.append('buyme')
 PRODUCTION=False
 if PRODUCTION:
   ALLOWED_HOSTS = ["208.68.38.174"]
+  DEBUG = False
 
 ########################################################
 
