@@ -107,7 +107,11 @@ STATIC_URL = '/static/'
 
 # All the above was generated automatically by django-admin.
 # Only this was added by me:
- 
+
+# sending email:
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_USE_TLS, EMAIL_USE_SSL, EMAIL_PORT = True, False, 587
+
 # location for static files (images, etc.)
 STATIC_ROOT = os.path.join(BASE_DIR, "static", "djangosite")
 
@@ -115,7 +119,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static", "djangosite")
 INSTALLED_APPS=list(INSTALLED_APPS)
 INSTALLED_APPS.append('buyme')
 
-# sending email:
-EMAIL_HOST="smtp.gmail.com"
-EMAIL_USE_TLS, EMAIL_USE_SSL, EMAIL_PORT = True, False, 587
+########################################################
 
+# the following is only for generating UML diagrams.
+
+## for UML-diagrams via dia 
+## https://github.com/neumond/django-dia
+## pip install django-dia
+# INSTALLED_APPS.append('django-dia')   
+
+## for UML-diagrams via django-extensions 
+## http://django-extensions.readthedocs.org/en/latest/graph_models.html
+## pip install django-extensions
+## pip install pyparsing==1.5.7
+## pip install pydot
+# INSTALLED_APPS.append('django_extensions')
+## python manage.py graph_models -a -g -o buyme.png
+
+## UML-diagrams via pygraphviz
+## pip install wheel 
+## pip install pylint pygraphviz
+## pip remove pygraphviz
+#### bug in pygraphviz installer, reported.
+  

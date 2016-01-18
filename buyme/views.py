@@ -28,7 +28,7 @@ from config import DEBUG_MESSAGES
 from tools import htmlBodyTags, printDictAsHtmlPRE
 from paymentGateway import createCoinbaseCheckout
 
-from models import newBuyForm
+from buyme.models import newBuyForm
 
 from django.http import HttpResponse
 from django.shortcuts import redirect

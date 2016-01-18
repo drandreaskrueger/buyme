@@ -34,6 +34,8 @@ def settings_hack():
   root_path = os.path.dirname(root_path) # one up
   # print root_path
   sys.path.insert(0, root_path)
+  sys.path.insert(0, os.path.join(root_path, "djangosite"))
+  
   import django; django.setup()
   
   
