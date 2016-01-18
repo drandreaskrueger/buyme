@@ -47,7 +47,7 @@ def reaction_saveAsPaid(notif):
     p.NewBuy = newBuy.objects.get(pk=newBuy_id)
   except Exception as e:
     print "EXCEPTION:", type(e), e
-  p.NewBuy = None
+    p.NewBuy = None
   
   p.metadata =  notif['data']['resource']['metadata']
   # if more info needed, recover it by requesting this transaction:

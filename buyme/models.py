@@ -92,14 +92,11 @@ class paid(models.Model):
   "for storing money data received via webhook"
   dateCreated = models.DateTimeField('created', default = timezone.now)
   
-  NewBuy = models.ForeignKey(newBuy, blank=True, null=True)
-  
   metadata=JSONField()
   amount=models.CharField(max_length=AMOUNT_LENGTH)
   amount_BTC=models.CharField(max_length=AMOUNT_BTC_LENGTH)
   status=models.CharField(max_length=STATUS_LENGTH)
   tx=models.CharField(max_length=TX_LENGTH)
   
-  # redundant, but lazy style, easier for admin pages:
-  # email     = models.EmailField(max_length=EMAILLENGTH, blank=False)
-  
+  # blank = notification for e.g. older checkouts. 
+  NewBuy = models.ForeignKey(newBuy, blank=True, null=True) 
