@@ -80,7 +80,7 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
       # TODO: How to check if creating the checkout succeeded? Probably this will throw an exception:
       try: 
         checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2, amount_presets=presets)
-        print checkout.warnings
+        if dbg: print "checkout.warnings=%" % checkout.warnings
       except Exception as e:
         print "EXCEPTION: ", type(e), e
         answer="Problem. Please tell us: (%s) %s" % (type(e), e)

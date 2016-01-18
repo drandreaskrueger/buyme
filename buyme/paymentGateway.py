@@ -60,8 +60,15 @@ def createCoinbaseCheckout(amount=59, metadata={"id": 42, "product" : "8 hours"}
   return checkout
 
 def verifyCallbackAuthenticity(request):
-  """https://github.com/coinbase/coinbase-python#merchant-callbacks"""
+  """https://github.com/coinbase/coinbase-python#merchant-callbacks
   
+  verify_callback() IS BROKEN!
+  See 
+  https://github.com/drandreaskrueger/coinbaseTestbed/blob/master/output/BUGS_verify_callback.md
+  
+  """
+
+ 
   try:  
     client = Client(API_KEY, API_SECRET, base_api_uri=API_BACKEND_URL)
     verify=client.verify_callback(request.body, request.META['X-Signature'])
