@@ -32,7 +32,8 @@ class paidAdmin(admin.ModelAdmin):
   list_display = (  'id', "amount","amount_BTC","status", "newBuy_related", "metadata", "tx", "dateCreated")
   
   def newBuy_related(self, obj):
-        return obj.NewBuy.id
+    if obj.NewBuy==None: return "None"
+    else: return obj.NewBuy.id
   
 admin.site.register(paid,paidAdmin)
 
