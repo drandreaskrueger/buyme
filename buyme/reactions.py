@@ -43,7 +43,11 @@ def reaction_saveAsPaid(notif):
   
   # Find the related buy-form-object, and set foreign key:   
   newBuy_id = notif['data']['resource']['metadata']['id']
-  p.NewBuy = newBuy.objects.get(pk=newBuy_id)
+  try:
+    p.NewBuy = newBuy.objects.get(pk=newBuy_id)
+  except Exception as e:
+    print "EXCEPTION:", type(e), e
+  p.NewBuy = 0
   
   p.metadata =  notif['data']['resource']['metadata']
   # if more info needed, recover it by requesting this transaction:
