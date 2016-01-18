@@ -2,29 +2,31 @@
 ## README files
 * [../README](../README.md) = quickstart
 * [configure](configure.md) the app
-* [VPS](_how-to/VPS.md) get your own cheap server 
-* [create-project-and-app](_how-to/create-project-and-app.md) = django infos
-* [TODO](_how-to/TODO.md) - for you, and me.
+* [VPS](VPS.md) get your own cheap server 
+* [create-project-and-app](create-project-and-app.md) = django infos
+* [TODO](TODO.md) - for you, and me.
 
 ## Diagrams
-* Python modules
-* Flow   
-* Database tables
+* [Python modules](#python-modules)
+* [Flow](#flow) - how the user navigates, and what action is triggered
+* [Database tables](#database-tables)
 
-## Python modules 
+### Python modules 
 ![modules](img/scheme_pyreverse_buyme.png)
 
 done with 'pyreverse' 
 
-## Flow
+### Flow
 ![flow diagram](img/flow.png)
 
 created manually with 'Dia'
 
-## Database tables
+### Database tables
 
-![scheme](img/scheme.graph_models.png)
+![scheme](img/scheme_dia.png)  
+created with Django app 'django-dia'
 
+![scheme](img/scheme.graph_models.png)  
 created with Django app 'django-extension' --> 'graph_models'
 
 
