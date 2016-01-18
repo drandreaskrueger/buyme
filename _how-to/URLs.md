@@ -34,5 +34,5 @@ http://208.68.38.174:8000/buyme/hook/0000000139798743472/
 Of course - replace the 208.68.38.174 with *your IP address*.
 
 #### Hint: 
-The [last step (= reactions.py)](../_how-to/#flowchart) will only be executed if the webhook receives data from the correct (coinbase) IP range. For debugging that, just press the "*Start a new payment*" below the "View your receipt. Return to ..." button. Each payment causes coinbase to send a new notification to the webhook. 
+The [last step (see flowchart ... reactions.py)](../_how-to/#flowchart) will only be executed if the webhook receives data from the correct (coinbase) IP range. For debugging that, just press the "*Start a new payment*" below the "View your receipt. Return to ..." button. Each payment causes coinbase to send a new notification to the webhook. 
 

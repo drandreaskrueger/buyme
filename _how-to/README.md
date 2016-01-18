@@ -2,7 +2,7 @@
 
 Diagrams:
 * [Python modules](#python-modules) - how the .py call each other.
-* [Flow](#flowchart) - how the user navigates, and what action is triggered.
+* [Flowchart](#flowchart) - how the user navigates, and what action is triggered.
 * [Database tables](#database-tables).
 
 README files
