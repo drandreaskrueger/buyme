@@ -1,6 +1,6 @@
 '''
 @title    buyme ... config.py
-@version: v07
+@version: v08
   
 @summary  configuration, parameters, constants
           adapt this to your needs.
@@ -13,7 +13,7 @@
 
 from configPrivate import API_KEY, API_SECRET, EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
 
-VERSION="v06"
+VERSION="v08"
 
 SERVER_IP="208.68.38.174"
 
@@ -30,12 +30,12 @@ CHOICES=[
           ]
 SHOW_ALL_PRICES_AGAIN = True # True to show all these prices again in coinbase checkout dialogue 
 
-PRODUCTION=False
+PRODUCTION=True
 DEBUG_MESSAGES=True
 
 # TODO: automatic process, with individualized obfuscated hook names. Until then, change manually:
-HOOK1 = "0000000139798743472" # set when API key created https://sandbox.coinbase.com/settings/api
-HOOK2 = "9999999345354234744" # set in individual checkout. Only this seems to work, the above not. 
+HOOK1 = "0000000847283492041" # set when API key created https://sandbox.coinbase.com/settings/api
+HOOK2 = "9999999876543765456" # set in individual checkout. Only this seems to work, the above not. 
 HOOKS = (HOOK1, HOOK2) 
 
 STYLE=("ul.errorlist {list-style-type: none; display:inline; margin-left: 0; padding-left: 0;}"

@@ -39,6 +39,13 @@ Instead of the hardcoded placeholders (HOOKS in config.py), of course a final pr
 #### Security HTTPS
 The finaly production version should run as an uWSGI app behind an nginx server (see [VPS.md](VPS.md)), with https enabled. 
 
+#### Security Django
+Run this command, and work through the shown issues:
+
+    python manage.py check --deploy
+    
+And read the page [howto/deployment/checklist/](https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/).
+
 ### Mispayments
 I tried to send to a checkout address many hours later. It worked! And it did create a callback on my webhook!   
 
