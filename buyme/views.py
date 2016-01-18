@@ -43,7 +43,8 @@ def renderBuyForm(request, form):
                                       'productname': PRODUCTNAME,
                                       'productdescription': PRODUCTDESCRIPTION,
                                       'linkToOtherVersion': OTHER_VERSION_HTML,
-                                      'version' : VERSION})
+                                      'version' : VERSION,
+                                      'style': STYLE})
 
 def buy_URL(request, dbg=DEBUG_MESSAGES):
   """URL: webpage with form.

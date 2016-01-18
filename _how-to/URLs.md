@@ -38,8 +38,8 @@ http://208.68.38.174:8000/buyme/hook/0000000139798743472/
   
 After payment pages:
 
-[/buyme/thankyou/](http://208.68.38.174/buyme/thankyou/?name=dummy&text=greetings)  
-[/buyme/cancel/](http://208.68.38.174/buyme/cancel/?name=dummy&text=greetings)
+[/buyme/thankyou/](http://208.68.38.174:8000/buyme/thankyou/?name=dummy&text=greetings)  
+[/buyme/cancel/](http://208.68.38.174:8000/buyme/cancel/?name=dummy&text=greetings)
   
 Of course - replace the 208.68.38.174 with *your IP address*.
 
