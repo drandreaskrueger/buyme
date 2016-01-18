@@ -25,13 +25,13 @@ if __name__ == "__main__":
 from config import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
 from config import DEBUG_MESSAGES, PRODUCTION
 from tools import amountCurrency
-from models import paid, newBuy   # from buyme.models
+from buyme.models import paid, newBuy   # from buyme.models
 
 from django.core.mail import send_mail
 from django.core import serializers
 
 import os, json
-from pprint import pformat
+from pprint import pformat, pprint
 
 
 def reaction_saveAsPaid(notif):
@@ -90,8 +90,9 @@ def reaction_sendMeEmail(p, request, hookname, dbg=DEBUG_MESSAGES):
     if dbg: print "Email recipient not set. Not sending email."
     return False
   
-  # most important data first
-  p = serializers.serialize('json', p)
+  # most important data first; 
+  # serialize the whole instance, then pretty print 
+  p=json.loads(serializers.serialize("json", [p]))[0]
   paid = pformat (p, indent=3)
   
   # whole notification
@@ -154,10 +155,16 @@ def test_reaction_saveAsPaid():
     p=reaction_saveAsPaid(notif)
     print p.id, type(p.id)
   
+def test_formatInstance():
+  p = newBuy.objects.get(pk=1)
+  print p._meta.get_all_field_names()
+  s=json.loads(serializers.serialize("json", [p]))[0]
+  pprint (s)
 
 if __name__ == "__main__":
   settings_hack()
-  test_sendMail()
-  test_reaction_saveAsPaid()
+  # test_sendMail()
+  # test_reaction_saveAsPaid()
+  test_formatInstance()
   
   
