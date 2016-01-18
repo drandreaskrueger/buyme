@@ -42,6 +42,6 @@ And the static files made available:
     python manage.py runserver 0.0.0.0:8000
 
 ### Testing
-Now you can try all the [URLs in the cloud](create-project-and-app.md#urls-in-the-cloud). In my case the base url is:
+Now you can try all the [URLs in the cloud](urls.md#urls-in-the-cloud). In my case the base url is:
 
 --> http://208.68.38.174:8000/buyme/

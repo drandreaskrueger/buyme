@@ -2,8 +2,10 @@
 ## README files
 * [../README](../README.md) = quickstart
 * [configure](configure.md) the app
+* [urls](urls.md) to try
+
 * [VPS](VPS.md) get your own cheap server 
-* [create-project-and-app](create-project-and-app.md) = django infos
+* [django](django.md) = create django app infos
 * [TODO](TODO.md) - for you, and me.
 
 ## Diagrams

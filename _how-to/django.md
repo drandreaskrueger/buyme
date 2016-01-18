@@ -1,5 +1,5 @@
 # Create project and app
-You DO NOT have to do all this. I have just documented all steps, how I have created the django app.
+You DO NOT have to do all this. I have just documented all steps, how I have created the **django app**.
 
 ### create django project & app within eclipse
 Within eclipse (4.5):
@@ -63,46 +63,16 @@ or
 
     python manage.py runserver 0.0.0.0:8000
 
-### URLs to try on localhost:
-#### localhost (for dev'ing in eclipse)
 
-GET:  
-[http://localhost:8000/buyme/](http://localhost:8000/buyme/)
-
-[http://localhost:8000/buyme/hook/0000000139798743472/](http://localhost:8000/buyme/hook/0000000139798743472/)  
-[http://localhost:8000/admin](http://localhost:8000/admin)
-
-POST:
-  
-    curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://localhost:8000/buyme/hook/0000000139798743472/
-    curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://localhost:8000/buyme/hook/5555555555555555555/  
-
-BTW: On windows, I got ``curl`` via [chocolatey](https://chocolatey.org/):
-
-    choco install curl 
-
-### copy to linux VPS
-copy all files to linux VPS (TODO: git clone ...), then
-
-    cd /var/www/djangoproject
+### On linux VPS
+See [#quickstart](../#quickstart). If DB gets corrupted, a fresh start goes like this:
+    
+	rm db.sqlite3
+	rm buyme/migrations/*
+	
     python manage.py makemigrations buyme
     python manage.py migrate
+    python manage.py createsuperuser
     
 	python manage.py runserver 0.0.0.0:8000
 	
-	
-### URLs in the cloud 
-
-http://208.68.38.174:8000/buyme
-
-http://208.68.38.174:8000/admin
-
-http://208.68.38.174:8000/buyme/hook/0000000139798743472/
-
-
-    curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/0000000139798743472/  
-    curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/5555555555555555555/
-  
-Of course - replace the 208.68.38.174 with *your IP address*.
-
-
