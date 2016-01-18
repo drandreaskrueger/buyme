@@ -104,7 +104,7 @@ def reaction_sendMeEmail(p, request, hookname, dbg=DEBUG_MESSAGES):
   
   
 
-def reaction_toTrustedCallbackData(request, hookname, dbg):
+def ifTrustedCallbackData(request, hookname, dbg):
   """Here is where the magic happens!
   
      Receiving the correct data on the hook can mean, 

@@ -25,7 +25,7 @@ from config import DEBUG_MESSAGES
 from tools import htmlBodyTags
 from models import hookInbox
 
-from reaction import reaction_toTrustedCallbackData # <-- called when all ok!
+import reactions #  <-- called when received data all ok!
 
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
@@ -80,7 +80,7 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES):
   if trust: 
     # TODO: Especially if more reactions are added, then this could be done in 
     # its own thread, to be able to quickly answer back to Coinbase: (200, OK)
-    reaction_toTrustedCallbackData(request, hookname, dbg)
+    reactions.ifTrustedCallbackData(request, hookname, dbg)
   
   return HttpResponse(htmlBodyTags( "Thanks." )) # (200, OK)
 
