@@ -15,6 +15,9 @@ Go deeper:
 * [django](django.md) = how I created the django app.
 * [TODO](TODO.md) for you, and me.
 
+Output:
+* [output/README.md](../output/README.md) = notifications, emails, and screenshots of /admin/ pages 
+
 ## Diagrams
 
 ### Python modules 
