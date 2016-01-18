@@ -75,11 +75,17 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
       metadata={"id": newbuy.id, # primary key can later be used to identify (paid --> newbuy) 
                 "duration": duration, "price": "%s %s" % (price, CURRENCY)} # most important data into payment
       
-      presets=None if not SHOW_ALL_PRICES_AGAIN else [p["price"] for p in CHOICES] 
-      checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2, amount_presets=presets)
+      presets=None if not SHOW_ALL_PRICES_AGAIN else [p["price"] for p in CHOICES]
+      
+      # TODO: How to check if creating the checkout succeeded? Probably this will throw an exception:
+      try: 
+        checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2, amount_presets=presets)
+      except Exception as e:
+        print "EXCEPTION: ", type(e), e
+        answer="Problem. Please tell us: (%s) %s" % (type(e), e)
+        return HttpResponse(htmlBodyTags( answer ))
       
       # print checkout
-      # TODO: How to check if creating the checkout succeeded? Probably this will throw an exception:
       embed_code=checkout["embed_code"]
       
       payment_url='%s/checkouts/%s' % (API_FRONTEND_URL, embed_code)
