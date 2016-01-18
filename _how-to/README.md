@@ -4,13 +4,13 @@
 * [configure](configure.md) the app, and your coinbase account
 * [urls](urls.md) to try
 
-* [VPS](VPS.md) get your own cheap server 
+* [VPS](VPS.md) get your own cheap server
 * [django](django.md) = create django app infos
 * [TODO](TODO.md) - for you, and me.
 
 ## Diagrams
 * [Python modules](#python-modules)
-* [Flow](#flow) - how the user navigates, and what action is triggered
+* [Flow](#flowchart) - how the user navigates, and what action is triggered
 * [Database tables](#database-tables)
 
 ### Python modules 
@@ -18,7 +18,7 @@
 
 done with 'pyreverse' 
 
-### Flow
+### Flowchart
 ![flow diagram](img/flow.png)
 
 created manually with 'Dia'
