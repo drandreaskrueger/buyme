@@ -23,7 +23,7 @@
 from config import API_FRONTEND_URL
 from config import PRODUCTNAME, PRODUCTDESCRIPTION, CHOICES, CURRENCY, SHOW_ALL_PRICES_AGAIN 
 from config import VERSION, SERVER, APPNAME, HOOK2 # config for my app
-from config import PAGEHEADER, OTHER_VERSION_HTML # HTML snippets for mainnet <-> testnet
+from config import STYLE, PAGEHEADER, OTHER_VERSION_HTML # HTML snippets for mainnet <-> testnet
 from config import DEBUG_MESSAGES
 from tools import htmlBodyTags, printDictAsHtmlPRE
 from paymentGateway import createCoinbaseCheckout
@@ -87,13 +87,18 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
       
       return redirect(payment_url)
 
-  
+
+def addHeader():
+  s='<style type="text/css">%s</style>' % STYLE
+  s+=PAGEHEADER
+  s+="<p>This page gets called when the blue 'Return to ...' button is pressed "
+  return s
 
 def thankYou_URL(request):
   """URL: thankyou
   """
-  answer=PAGEHEADER
-  answer+="This page gets called when the blue 'Return to ...' button is pressed after payment."
+  answer=addHeader()
+  answer+= "after payment.</p>"
 
   # TODO: Do some fancy reaction 'Hooray you have paid'.
   answer+="<h1>Thank you for your purchase:</h1>"
@@ -105,8 +110,8 @@ def cancel_URL(request):
   """URL: cancel
   """
   
-  answer=PAGEHEADER
-  answer+="This page gets called when the blue 'Return to ...' button is pressed there was no payment for 15 minutes."
+  answer=addHeader()
+  answer+="after there was no payment for 15 minutes.</p>"
 
   # TODO: Do some fancy reaction 'You waited too long'.
   answer+="<h1>Checkout was cancelled:</h1>"

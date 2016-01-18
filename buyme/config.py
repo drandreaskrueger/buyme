@@ -45,6 +45,12 @@ HOOK1 = "0000000139798743472" # set when API key created https://sandbox.coinbas
 HOOK2 = "9999999345354234744" # set in individual checkout. Only this seems to work, the above not. 
 HOOKS = (HOOK1, HOOK2) 
 
+STYLE=("ul.errorlist {list-style-type: none; display:inline; margin-left: 0; padding-left: 0;}"
+       "ul.errorlist li {display: inline; color:red; }"
+       ".required { font-weight: bold; }"
+       "form table tr td {vertical-align: top;}"
+       "body {font-family:Verdana,Arial,sans-serif;margin-top:0;}")
+
 ######################################################
 # you probably do not want to change much below this. 
 ######################################################
@@ -70,10 +76,10 @@ if PRODUCTION:
   
 else:
   SERVER_PORT=8000
-  PAGEHEADER=('<p style="width:100%; height:29px; color:white; background-color:' 
+  PAGEHEADER=('<div style="width:100%; height:29px; color:white; background-color:' 
               '#E07400; text-align:center; padding-top:11px;}">'
               'This is a sandboxed environment for' 
-              ' testing and development purposes; all BTC values are testnet.</p>')
+              ' testing and development purposes; all BTC values are testnet.</div>')
   SERVER_OTHER_NAME, SERVER_OTHER="mainnet", "http://%s:8001" % SERVER_IP
   SENTENCE="This uses testnet3 money. Go to the '%s' version, to spend real money, and buy real time from me."
   

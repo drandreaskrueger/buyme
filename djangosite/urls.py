@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.http import HttpResponse
 
 PAGE = "<html><body>%s</body></html>"
-def home(request): return HttpResponse( PAGE % "Hello World!")
+def home(request): 
+  return HttpResponse( PAGE % 'Hello World! Try the <a href="buyme">buyme</a> app.' )
 
 urlpatterns = [
     # Examples:

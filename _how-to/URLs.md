@@ -18,6 +18,11 @@ BTW: On windows, I got ``curl`` via [chocolatey](https://chocolatey.org/):
 
     choco install curl 
 
+After payment pages:
+
+[/buyme/thankyou/](http://localhost:8000/buyme/thankyou/?name=dummy&text=greetings)  
+[/buyme/cancel/](http://localhost:8000/buyme/cancel/?name=dummy&text=greetings)
+
 	
 ### URLs in the cloud 
 
@@ -30,6 +35,11 @@ http://208.68.38.174:8000/buyme/hook/0000000139798743472/
 
     curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/0000000139798743472/  
     curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/5555555555555555555/
+  
+After payment pages:
+
+[/buyme/thankyou/](http://208.68.38.174/buyme/thankyou/?name=dummy&text=greetings)  
+[/buyme/cancel/](http://208.68.38.174/buyme/cancel/?name=dummy&text=greetings)
   
 Of course - replace the 208.68.38.174 with *your IP address*.
 
