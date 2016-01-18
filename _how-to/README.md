@@ -1,7 +1,7 @@
 # Background infos
 ## README files
 * [../README](../README.md) = quickstart
-* [configure](configure.md) the app
+* [configure](configure.md) the app, and your coinbase account
 * [urls](urls.md) to try
 
 * [VPS](VPS.md) get your own cheap server 
