@@ -116,13 +116,14 @@ EMAIL_USE_TLS, EMAIL_USE_SSL, EMAIL_PORT = True, False, 587
 
 # location for static files (images, etc.)
 STATIC_ROOT = os.path.join(BASE_DIR, "static", "djangosite")
+print STATIC_ROOT  
 
 # register the app:
 INSTALLED_APPS=list(INSTALLED_APPS)
 INSTALLED_APPS.append('buyme')
 
 # production:
-ALLOWED_HOSTS = ["208.68.38.174"]
+ALLOWED_HOSTS = ["*"]  # ["208.68.38.174"]
 
 ########################################################
 
