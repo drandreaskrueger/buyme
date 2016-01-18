@@ -59,6 +59,18 @@ def createCoinbaseCheckout(amount=59, metadata={"id": 42, "product" : "8 hours"}
   checkout = client.create_checkout(**parameters)
   return checkout
 
+def verifyCallbackAuthenticity(request):
+  """https://github.com/coinbase/coinbase-python#merchant-callbacks"""
+  
+  try:  
+    client = Client(API_KEY, API_SECRET, base_api_uri=API_BACKEND_URL)
+    verify=client.verify_callback(request.body, request.META['X-Signature'])
+  except Exception as e:
+    print "verify_callback EXCEPTION: ", type(e), e
+    return False
+  
+  return verify
+
 
 if __name__ == "__main__":
     print "N.B.: This is not run directly, but whole project as 'django runserver'."

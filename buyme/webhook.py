@@ -19,7 +19,10 @@ from config import DEBUG_MESSAGES
 from tools import htmlBodyTags
 from models import hookInbox
 
+import paymentGateway
+
 import reactions #  <-- called when received data all ok!
+
 
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
@@ -35,6 +38,7 @@ def checkIPcorrect(IP, IPpattern=COINBASE_CORRECT_IP, dbg=DEBUG_MESSAGES):
   else:
     if dbg: print "'%s' is NOT a coinbase IP!" % IP
     return False
+
 
 
 def hook_storeCallbackDataIntoDatabase(request, hookname, trust):
@@ -65,7 +69,14 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES):
     return HttpResponseBadRequest(htmlBodyTags(answer)) 
 
   # Did it from Coinbase?
-  trust=checkIPcorrect(request.META['REMOTE_ADDR'])
+  trustIP=checkIPcorrect(request.META['REMOTE_ADDR'])
+  if dbg: print "trustIP=%s" % trustIP
+  
+  # Is the signature correct?
+  trustSig=paymentGateway.verifyCallbackAuthenticity(request)
+  if dbg: print "trustSig=%s" % trustSig 
+  
+  trust = trustIP and trustSig
    
   # Store all. Regardless. Later switch off? 
   hook_storeCallbackDataIntoDatabase(request, hookname, trust) 
