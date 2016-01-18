@@ -67,11 +67,19 @@ def verifyCallbackAuthenticity(request):
   https://github.com/drandreaskrueger/coinbaseTestbed/blob/master/output/BUGS_verify_callback.md
   
   """
-
  
   try:  
     client = Client(API_KEY, API_SECRET, base_api_uri=API_BACKEND_URL)
-    verify=client.verify_callback(request.body, request.META['X-Signature'])
+    # verify=client.verify_callback(request.body, request.META['X-Signature'])
+    
+    print "request.body:"
+    print request.body
+    print "request.META:"
+    print request.META
+    print request.META.keys()
+    
+    verify=client.verify_callback(request.body, request.META['HTTP_CB_SIGNATURE'])
+    
   except Exception as e:
     print "verify_callback EXCEPTION: ", type(e), e
     return False
