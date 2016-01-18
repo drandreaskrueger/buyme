@@ -121,8 +121,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static", "djangosite")
 INSTALLED_APPS=list(INSTALLED_APPS)
 INSTALLED_APPS.append('buyme')
 
-# production:
-ALLOWED_HOSTS = ["208.68.38.174"]
+PRODUCTION=False
+if PRODUCTION:
+  ALLOWED_HOSTS = ["208.68.38.174"]
 
 ########################################################
 
