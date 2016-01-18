@@ -28,6 +28,7 @@ from tools import amountCurrency
 from models import paid, newBuy   # from buyme.models
 
 from django.core.mail import send_mail
+from django.core import serializers
 
 import os, json
 from pprint import pformat
@@ -89,7 +90,8 @@ def reaction_sendMeEmail(p, request, hookname, dbg=DEBUG_MESSAGES):
     if dbg: print "Email recipient not set. Not sending email."
     return False
   
-  # most important data
+  # most important data first
+  p = serializers.serialize('json', [ p, ])
   paid = pformat (p, indent=3)
   
   # whole notification
