@@ -65,7 +65,7 @@ or
 
 
 ### On linux VPS
-See [#quickstart](../#quickstart). If DB gets corrupted, a fresh start goes like this:
+See [#quickstart](../README.md#quickstart). If DB gets corrupted, a fresh start goes like this:
     
 	rm db.sqlite3
 	rm buyme/migrations/*
