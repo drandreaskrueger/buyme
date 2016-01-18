@@ -36,20 +36,17 @@ Open in browser (change to your IP address):
 * http://208.68.38.174:8000/buyme
 * http://208.68.38.174:8000/admin 
     
+## More information:
+[![diagrams and more](_how-to/img/thumbs.png)](_how-to/README.md)
 
-## more information:
-* [VPS](_how-to/VPS.md) server 
-* [configure](_how-to/configure.md) app
-* [create-project-and-app](_how-to/create-project-and-app.md) = how I created the django app (too much information)
-* [TODO](_how-to/TODO.md) - for you, and me.
-* [LICENSE](LICENSE).
+See [_how-to/README.md](_how-to/README.md) for diagrams, and manuals.
 
-## structure:
-* [djangosite/](djangosite/) = django project
+## what you might want to edit:
 * [buyme/](buyme/) = django app
   * [config.py](buyme/config.py) = constants that influence the app 
   * [configPrivate.py](buyme/configPrivate.py) = coinbase & email credentials
-  * [templates/](buyme/templates/) = html template of buyme/-page with form 
+  * [templates/](buyme/templates/) = html template of buyme/-page with form
+* [djangosite/](djangosite/) = django project, see settings.py 
 
 ## donation ware!
 (C) 2016 Andreas Krueger  
