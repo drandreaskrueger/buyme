@@ -91,7 +91,7 @@ def reaction_sendMeEmail(p, request, hookname, dbg=DEBUG_MESSAGES):
     return False
   
   # most important data first
-  p = serializers.serialize('json', [ p, ])
+  p = serializers.serialize('json', p)
   paid = pformat (p, indent=3)
   
   # whole notification
