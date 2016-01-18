@@ -1,16 +1,14 @@
 '''
 @title    buyme ... models.py
-@version: v04
+@version: v07
   
-@module   Database models    
-  
-@summary  Coinbase Payments made easy
-          Django app to buy time, with BTC payments 
-          - how to: 
-              Coinbase checkouts, 
-              webhooks, 
-              thankYou & cancel pages, 
-              etc.
+@summary   Database models.
+           To better understand the data structure, see _how-to/README.md
+
+           Whenever s.th. changes in here, do 
+              makemigrations buyme
+              migrate
+           to update the database.  
   
 @license:   (C) 2016 Andreas Krueger
 @attention: If you like this, show it: [BTC] 1NvfRSDzXmwUdTjeqN8MAfmPCNHgwB8eiC  
@@ -31,7 +29,8 @@ from config import CHOICES, CURRENCY, HOOKS, APPNAME
 
 # the user choices for the product
 max_length_choice=max([len(p["name"]) for p in CHOICES])
-choices=[(p["name"], "%s (%s %s)" % (p["name"],p["price"],CURRENCY) ) for p in CHOICES]
+choices=[(p["name"], "%s (%s %s)" % (p["name"],p["price"],CURRENCY) ) 
+         for p in CHOICES]
 
 EMAILLENGTH=254
 SKYPENAMELENGTH=32

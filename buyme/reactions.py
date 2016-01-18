@@ -1,16 +1,15 @@
 '''
-@title    buyme ... reaction.py
-@version: v04
+@title    buyme ... reactions.py
+@version: v07
   
-@module   React when user has paid, send email, etc.
+@summary  Reactions when user payment received through webhook.
+
+          save into paid-database
+          send email
+          etc.
+          
+          reactions.ifTrustedCallbackData gets called from webhook
   
-@summary  Coinbase Payments made easy
-          Django app to buy time, with BTC payments 
-          - how to: 
-              Coinbase checkouts, 
-              webhooks, 
-              thankYou & cancel pages, 
-              etc.
   
 @license:   (C) 2016 Andreas Krueger
 @attention: If you like this, show it: [BTC] 1NvfRSDzXmwUdTjeqN8MAfmPCNHgwB8eiC  
@@ -143,7 +142,6 @@ def ifTrustedCallbackData(request, hookname, dbg):
 
 # testing:
 
-
 def test_sendMail():
   print sendMail(EMAIL_ALERT_ME, "test-subject", "test-body")
 
@@ -165,6 +163,6 @@ if __name__ == "__main__":
   settings_hack()
   # test_sendMail()
   # test_reaction_saveAsPaid()
-  test_formatInstance()
+  # test_formatInstance()
   
   

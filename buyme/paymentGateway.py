@@ -1,16 +1,8 @@
 '''
-@title    buyme ... coinbase.py
-@version: v04
+@title    buyme ... paymentGateway.py
+@version: v07
   
-@module   coinbase checkout
-  
-@summary  Coinbase Payments made easy
-          Django app to buy time, with BTC payments 
-          - how to: 
-              Coinbase checkouts, 
-              webhooks, 
-              thankYou & cancel pages, 
-              etc.
+@summary  coinbase checkout
   
 @license:   (C) 2016 Andreas Krueger
 @attention: If you like this, show it: [BTC] 1NvfRSDzXmwUdTjeqN8MAfmPCNHgwB8eiC  

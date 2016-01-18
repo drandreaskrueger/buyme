@@ -1,16 +1,16 @@
 '''
-@title    buyme ... pages.py
-@version: v04
+@title    buyme ... views.py
+@version: v07
   
-@module   The html pages for the app.
+@summary  All the html pages for the app.
 
-          N.B.: The (purely POST) webhook is in webhook.py
+          (N.B.: The POST-webhook is in webhook.py)
   
-@summary  Coinbase Payments made easy
+          Coinbase Payments made easy
           Django app to buy time, with BTC payments 
-          - how to: 
-              Coinbase checkouts, 
-              webhooks, 
+          - learning how to: 
+              create Coinbase checkouts, 
+              receive data an webhooks, 
               thankYou & cancel pages, 
               etc.
   
@@ -25,10 +25,9 @@ from config import PRODUCTNAME, PRODUCTDESCRIPTION, CHOICES, CURRENCY, SHOW_ALL_
 from config import VERSION, SERVER, APPNAME, HOOK2 # config for my app
 from config import STYLE, PAGEHEADER, OTHER_VERSION_HTML # HTML snippets for mainnet <-> testnet
 from config import DEBUG_MESSAGES
+from models import newBuyForm # from buyme.models
 from tools import htmlBodyTags, printDictAsHtmlPRE
 from paymentGateway import createCoinbaseCheckout
-
-from buyme.models import newBuyForm
 
 from django.http import HttpResponse
 from django.shortcuts import redirect

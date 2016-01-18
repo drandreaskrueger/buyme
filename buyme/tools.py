@@ -2,16 +2,14 @@
 Created on 15 Jan 2016
 
 @author: Andreas
+
+@version v07
 '''
 
-#from django.http import HttpResponse
 from pprint import pformat
 
 def htmlBodyTags(body):
   return ("<html><body>%s</body></html>" % body)
-
-#def home(request):
-#  return HttpResponse(htmlBodyTags( "Hello World!" ))
 
 def amountCurrency(money):
   return "%s %s" % (money["amount"], money["currency"])

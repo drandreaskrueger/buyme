@@ -1,16 +1,10 @@
 '''
 @title    buyme ... webhook.py
-@version: v04
+@version: v07
   
-@module   hook for coinbase callbacks
-  
-@summary  Coinbase Payments made easy
-          Django app to buy time, with BTC payments 
-          - how to: 
-              Coinbase checkouts, 
-              webhooks, 
-              thankYou & cancel pages, 
-              etc.
+@summary  hook for coinbase callbacks
+
+          TODO: individual generated hooknames instead of hardcoded placeholders  
   
 @license:   (C) 2016 Andreas Krueger
 @attention: If you like this, show it: [BTC] 1NvfRSDzXmwUdTjeqN8MAfmPCNHgwB8eiC  

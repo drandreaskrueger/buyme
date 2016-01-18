@@ -23,6 +23,7 @@ I'd like it better to keep incoming money in one *dedicated account* **per app**
 ## TODO me
 
 ### Security
+#### Security API_SECRET
 The file [configPrivate.py](../buyme/configPrivate.py) is not the ideal place for the API_SECRET, and the EMAIL_USER_PASSWORD.
 
 One problem is that it might accidentially get uploaded to git. I have already put it in .gitignore, but even then, it happened, somehow.  When you have input your own credentials, you can remove it from the git index:
@@ -32,17 +33,21 @@ One problem is that it might accidentially get uploaded to git. I have already p
     
 But that is not the final say in security. Where to best store sensitive data?
 
+#### Security Hooknames
+Instead of the hardcoded placeholders (HOOKS in config.py), of course a final production version needs individually generated hooknames. Probably simply stored as one more field in the 'newBuy' structure. When webhook data is received, the hookname is compared to all those existing hooknames.  
+
+#### Security HTTPS
+The finaly production version should run as an uWSGI app behind an nginx server (see [VPS.md](VPS.md)), with https enabled. 
+
 ### Mispayments
-I tried to send to a checkout address many hours later. It worked! And it created a callback on my webhook!   
+I tried to send to a checkout address many hours later. It worked! And it did create a callback on my webhook!   
 
-But as The *wrong amount of money is sent to an address*, it is counted as 'mispayment', see [notification_mispayment.email.txt](../output/notification_mispayment.email.txt) versus [notification_correctPayment.email.txt](../output/notification_correctPayment.email.txt). 
+But it is counted as 'mispayment' (probably similar to if the *wrong amount of money is sent to a given address*). Examples - see [notification_mispayment.email.txt](../output/notification_mispayment.email.txt) versus [notification_correctPayment.email.txt](../output/notification_correctPayment.email.txt). 
 
-Recognize that, and treat differently.
-
-EDIT: Mostly done. The ``notification.data.resource.status`` is saved into the 'paid' object (= 'expired' or 'paid'). So immediately visible.
+EDIT: Mostly done: Code recognizes that, and treats it differently. The ``notification.data.resource.status`` is saved into the 'paid' object (= 'expired' or 'paid'), and put into the email. So it is immediately visible.
 
 ### Reactions
-When a payment is received a lot of additional actions can be triggered. See [reaction.py](https://github.com/drandreaskrueger/buyme/blob/master/buyme/reaction.py#L107-L132).
+When a payment is received a lot of additional actions can be triggered. See [reactions.py](../buyme/reactions.py#L107-L132).
 
 ### Finishing touch
 favicon.ico
