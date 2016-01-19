@@ -113,7 +113,7 @@ STATIC_URL = '/static/'
 PRODUCTION=True
 
 if PRODUCTION:
-  ALLOWED_HOSTS = ["*"] # ["208.68.38.174"]
+  ALLOWED_HOSTS = ['208.68.38.174', '*'] # ["208.68.38.174"]
   DEBUG = False
 
 # sending email:
