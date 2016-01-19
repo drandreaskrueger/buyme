@@ -14,6 +14,8 @@ git update-index --assume-unchanged buyme/configPrivate.py
 
 echo .
 echo . You must edit configPrivate.py and then start the server:
+echo .
+echo . cd buyme 	
 echo . nano buyme/configPrivate.py
 echo . python manage.py runserver 0.0.0.0:8000
 echo .
