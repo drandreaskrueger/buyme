@@ -110,6 +110,12 @@ STATIC_URL = '/static/'
 # All the above was generated automatically by django-admin.
 # Only this was added by me:
 
+PRODUCTION=False
+
+if PRODUCTION:
+  ALLOWED_HOSTS = ["*"] # ["208.68.38.174"]
+  DEBUG = False
+
 # sending email:
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_USE_TLS, EMAIL_USE_SSL, EMAIL_PORT = True, False, 587
@@ -120,11 +126,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static", "djangosite")
 # register the app:
 INSTALLED_APPS=list(INSTALLED_APPS)
 INSTALLED_APPS.append('buyme')
-
-PRODUCTION=True
-if PRODUCTION:
-  ALLOWED_HOSTS = ["*"] # ["208.68.38.174"]
-  DEBUG = False
 
 ########################################################
 

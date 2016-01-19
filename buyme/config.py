@@ -1,6 +1,6 @@
 '''
 @title    buyme ... config.py
-@version: v08
+@version: v10
   
 @summary  configuration, parameters, constants
           adapt this to your needs.
@@ -11,9 +11,11 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
+PRODUCTION=False
+
 from configPrivate import API_KEY, API_SECRET, EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
 
-VERSION="v0.09"
+VERSION="v0.10"
 
 SERVER_IP="208.68.38.174"
 
@@ -32,7 +34,6 @@ CHOICES=[
           ]
 SHOW_ALL_PRICES_AGAIN = True # True to show all these prices again in coinbase checkout dialogue 
 
-PRODUCTION=True
 DEBUG_MESSAGES=True
 
 # TODO: automatic process, with individualized obfuscated hook names. Until then, change manually:
