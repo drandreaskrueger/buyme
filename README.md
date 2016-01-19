@@ -10,7 +10,7 @@ Django app to buy time with BTC payments.
 Prepare server:
 
     apt-get update && apt-get -y upgrade
-    apt-get install -y sudo nano lynx tree screen curl python-pip git 
+    apt-get install -y sudo nano lynx tree screen dos2unix wget curl python-pip git 
     sudo pip install -U pip
     sudo pip install Django iptools requests jsonfield coinbase
 

@@ -100,7 +100,16 @@ def verifyCallbackAuthenticity(request):
   return verify
 
 
+def someTests():
+  # print checkIPcorrect("54.175.255.207",COINBASE_CORRECT_IP)
+  # print checkIPcorrect("192.168.0.14",COINBASE_CORRECT_IP)  
+  
+  checkout=createCoinbaseCheckout()
+  print checkout
+
 if __name__ == "__main__":
-    print "N.B.: This is not run directly, but whole project as 'django runserver'."
+  # print "N.B.: This is not run directly, but whole project as 'django runserver'."
+  
+  someTests()
   
   
