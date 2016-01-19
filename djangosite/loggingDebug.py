@@ -15,6 +15,7 @@ LOGGING = {
         },
     },
 }
+import logging
 import logging.config
 logging.config.dictConfig(LOGGING)
 
