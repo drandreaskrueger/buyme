@@ -1,6 +1,6 @@
 '''
 @title    buyme ... paymentGateway.py
-@version: v07
+@version: v0.09
   
 @summary  coinbase checkout
   
@@ -11,12 +11,14 @@
 '''
 
 from config import API_KEY, API_SECRET, API_BACKEND_URL # config for coinbase
+from config import COINBASE_CORRECT_IP # config for coinbase
 from config import PRODUCTNAME, PRODUCTDESCRIPTION
 from config import CURRENCY, SERVER, APPNAME # config for my app
-from config import DEBUG_MESSAGES, PRODUCTNAME
+from config import DEBUG_MESSAGES
 
 from coinbase.wallet.client import Client
 
+import iptools  # pip install iptools
 
 
 def createCoinbaseCheckout(amount=59, metadata={"id": 42, "product" : "8 hours"}, 
@@ -58,6 +60,16 @@ def createCoinbaseCheckout(amount=59, metadata={"id": 42, "product" : "8 hours"}
     
   checkout = client.create_checkout(**parameters)
   return checkout
+
+def checkIPcorrect(IP, IPpattern=COINBASE_CORRECT_IP, dbg=DEBUG_MESSAGES):
+  "callbacks should come from Coinbase"
+  if (IP in iptools.IpRangeList(IPpattern)):
+    if dbg: print "'%s' is a coinbase IP, all cool." % IP
+    return True
+  else:
+    if dbg: print "'%s' is NOT a coinbase IP!" % IP
+    return False
+
 
 def verifyCallbackAuthenticity(request):
   """https://github.com/coinbase/coinbase-python#merchant-callbacks
