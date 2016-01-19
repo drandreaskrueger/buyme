@@ -16,8 +16,9 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
-from django.db import models
+from config import CHOICES, CURRENCY, APPNAME # HOOKS, 
 
+from django.db import models
 from django import forms
 from django.forms import ModelForm
 from django.utils import timezone
@@ -25,7 +26,7 @@ from django.utils import timezone
 ## sudo pip install jsonfield
 from jsonfield import JSONField
 
-from config import CHOICES, CURRENCY, HOOKS, APPNAME
+import random, string
 
 # the user choices for the product
 max_length_choice=max([len(p["name"]) for p in CHOICES])
@@ -41,19 +42,7 @@ AMOUNT_BTC_LENGTH = 16 # "999.12345678 BTC"
 STATUS_LENGTH =7 # # "expired", "paid"
 TX_LENGTH = 36 # "616124b5-db6f-5038-99a5-196aec516ec8"
 
-HOOKNAMELENGTH=max([len(h) for h in HOOKS])
-
-class hookInbox(models.Model):
-  "for storing received callback data arriving on hooks"
-  dateCreated = models.DateTimeField('created', default = timezone.now)
-  body = JSONField() 
-  meta = JSONField() 
-  hookname = models.CharField(max_length=HOOKNAMELENGTH)
-  TRUST = models.BooleanField(default=True)
-  class Meta:
-    app_label = APPNAME
-
-
+HOOKNAME_LENGTH=10 # max([len(h) for h in HOOKS]) 
 
 class newBuy(models.Model):
   "for form for buying"
@@ -63,7 +52,6 @@ class newBuy(models.Model):
   message   = models.TextField (max_length=MESSAGELENGTH, blank=True)
   dateCreated = models.DateTimeField('created', default = timezone.now)
   duration  = models.CharField(max_length=max_length_choice, choices=choices)
-  
   
 class newBuyForm(ModelForm):
   "form for buying"
@@ -86,6 +74,31 @@ class newBuyForm(ModelForm):
                'skypename': forms.TextInput(attrs={'size': 30}),
                'message': forms.Textarea (attrs = {'cols':'31', 'rows':'3'} )}
     
+def randName(length=HOOKNAME_LENGTH):
+  fromSet=string.lowercase[:26] + string.digits[0:10]
+  return "".join([random.choice(fromSet) for _ in range(length)])
+
+    
+class hookname(models.Model):
+  "each checkout gets its own obfuscating hookname"
+  name = models.CharField(max_length=HOOKNAME_LENGTH, default=randName)
+  dateCreated = models.DateTimeField('created', default = timezone.now)
+  
+  # allow blank = less trouble
+  NewBuy = models.ForeignKey(newBuy, blank=True, null=True)
+  
+
+class hookInbox(models.Model):
+  "for storing received callback data arriving on hooks"
+  dateCreated = models.DateTimeField('created', default = timezone.now)
+  body = JSONField() 
+  meta = JSONField() 
+  hookname = models.CharField(max_length=HOOKNAME_LENGTH)
+  TRUST = models.BooleanField(default=True)
+  class Meta:
+    app_label = APPNAME
+    
+
 
 class paid(models.Model):
   "for storing money data received via webhook"

@@ -8,6 +8,7 @@ Created on 15 Jan 2016
 
 from pprint import pformat
 
+
 def htmlBodyTags(body):
   return ("<html><body>%s</body></html>" % body)
 
@@ -37,3 +38,5 @@ def settings_hack():
   import django; django.setup()
   
   
+if __name__ == "__main__":
+  pass

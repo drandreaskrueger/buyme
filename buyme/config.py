@@ -1,6 +1,6 @@
 '''
 @title    buyme ... config.py
-@version: v11
+@version: v13
   
 @summary  configuration, parameters, constants
           adapt this to your needs.
@@ -16,7 +16,7 @@ PRODUCTION=False
 from configPrivate import API_KEY, API_SECRET, API_BACKEND_URL, API_FRONTEND_URL
 from configPrivate import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER 
 
-VERSION="v0.12"
+VERSION="v0.13"
 
 SERVER_IP="208.68.38.174"
 
@@ -35,10 +35,10 @@ SHOW_ALL_PRICES_AGAIN = True # True to show all these prices again in coinbase c
 
 DEBUG_MESSAGES=True # logging 
 
-# TODO: Individualized obfuscated hook names. Until then, change manually:
-HOOK1 = "0000000847283492041" # set when API key created https://sandbox.coinbase.com/settings/api
-HOOK2 = "9999999876543765456" # set in individual checkout. Only this seems to work, the above not. 
-HOOKS = (HOOK1, HOOK2) 
+# Done: Replaced by individualized obfuscating hook names. Before was manual:
+# HOOK1 = "0000000847283492041" # set when API key created https://sandbox.coinbase.com/settings/api
+# HOOK2 = "9999999876543765456" # set in individual checkout. Only this seems to work, the above not. 
+# HOOKS = (HOOK1, HOOK2) 
 
 STYLE=("ul.errorlist {list-style-type: none; display:inline; margin-left: 0; padding-left: 0;}"
        "ul.errorlist li {display: inline; color:red; }"

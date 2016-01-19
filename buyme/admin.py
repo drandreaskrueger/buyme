@@ -1,6 +1,6 @@
 '''
 @title    buyme ... admin.py
-@version: v07
+@version: v13
   
 @summary   Admin models for the django backend admin pages. 
            To better understand the data structure, see _how-to/README.md
@@ -14,12 +14,23 @@
 
 from django.contrib import admin
 
-from models import hookInbox, newBuy, paid
+from models import newBuy, hookname, hookInbox, paid 
+
+
+class hooknameAdmin(admin.ModelAdmin):
+  list_display = ('id', 'name', "newBuy_related", 'dateCreated')
+  def newBuy_related(self, obj):
+    if obj.NewBuy==None: return "None"
+    else: return obj.NewBuy.id
+
+admin.site.register(hookname, hooknameAdmin)
+
 
 class hookInboxAdmin(admin.ModelAdmin):
   list_display = ('TRUST', 'id', 'dateCreated', 'meta', 'body', 'hookname')
 
 admin.site.register(hookInbox, hookInboxAdmin)
+
 
 class paidAdmin(admin.ModelAdmin):
   list_display = (  'id', "amount","amount_BTC","status", "newBuy_related", "metadata", "tx", "dateCreated")
@@ -29,6 +40,7 @@ class paidAdmin(admin.ModelAdmin):
     else: return obj.NewBuy.id
   
 admin.site.register(paid,paidAdmin)
+
 
 class paidInline(admin.TabularInline): # TabularInline # StackedInline
   model = paid

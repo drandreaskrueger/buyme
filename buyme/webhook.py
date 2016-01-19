@@ -4,7 +4,7 @@
   
 @summary  hook for coinbase callbacks
 
-          TODO: individual generated hooknames instead of hardcoded placeholders  
+          now with: individual generated hooknames instead of hardcoded placeholders  
   
 @license:   (C) 2016 Andreas Krueger
 @attention: If you like this, show it: [BTC] 1JjSXcUKEmZGTvdC9BGbM6RrkGVdApape5  
@@ -12,11 +12,11 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
-from config import HOOKS, METAKEYS # config for my app
+from config import METAKEYS # config for my app  # HOOKS, 
 from config import DEBUG_MESSAGES
 
 from tools import htmlBodyTags
-from models import hookInbox
+from models import hookname, hookInbox
 
 import paymentGateway
 
@@ -42,6 +42,12 @@ def hook_storeCallbackDataIntoDatabase(request, hookname, trust):
   hooked.save()
   
 
+def allHooknames():
+  "get all hookname.name from database"
+  hooks=[obj.name for obj in hookname.objects.all()]
+  return hooks
+  
+
 @csrf_exempt  
 # disables the CSRF cookie (Cross Site Request Forgery protection)
 
@@ -53,8 +59,8 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES, DROP_ALL_BUT_POST = False):
   if DROP_ALL_BUT_POST and (request.method != 'POST'):
     answer="How dare you fiddle around here. Go away."
     return HttpResponseBadRequest(htmlBodyTags(answer))
-  
-  if (hookname not in HOOKS):
+
+  if (hookname not in allHooknames() ):
     if dbg: print "(Will later be blocked!) Data arriving on an unrecognized hook: %s" % hookname
     trustHook=False
   else:
@@ -86,5 +92,5 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES, DROP_ALL_BUT_POST = False):
 
 if __name__ == "__main__":
     print "N.B.: This is not run directly, but whole project as 'django runserver'."
-  
+    
   

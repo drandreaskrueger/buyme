@@ -1,6 +1,6 @@
 '''
 @title    buyme ... views.py
-@version: v07
+@version: v13
   
 @summary  All the html pages for the app.
 
@@ -22,10 +22,11 @@
 
 from config import API_FRONTEND_URL
 from config import PRODUCTNAME, PRODUCTDESCRIPTION, CHOICES, CURRENCY, SHOW_ALL_PRICES_AGAIN 
-from config import VERSION, SERVER, APPNAME, HOOK2 # config for my app
+from config import VERSION, SERVER, APPNAME  # config for my app # , HOOK2
 from config import STYLE, PAGEHEADER, OTHER_VERSION_HTML # HTML snippets for mainnet <-> testnet
 from config import DEBUG_MESSAGES
-from models import newBuyForm # from buyme.models
+
+from models import newBuyForm, hookname # from buyme.models
 from tools import htmlBodyTags, printDictAsHtmlPRE
 from paymentGateway import createCoinbaseCheckout
 
@@ -67,25 +68,30 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
     
     else: # form entries are valid, hooray :-)
       
-      if dbg: print "Valid. Taking form entries, and creating a coinbase checkout."
+      newbuy=form.save()  
+      
+      if dbg: print "Valid. Saved. Taking form entries, and creating a coinbase checkout."
       duration  = form.cleaned_data['duration']
       price = [ p["price"] for p in CHOICES if p["name"]==duration ] [0] # take first!
-      
-      newbuy=form.save()  
+
       metadata={"id": newbuy.id, # primary key can later be used to identify (paid --> newbuy) 
                 "duration": duration, "price": "%s %s" % (price, CURRENCY)} # most important data into payment
       
       presets=None if not SHOW_ALL_PRICES_AGAIN else [p["price"] for p in CHOICES]
-      
-      # TODO: How to check if creating the checkout succeeded? Probably this will throw an exception:
+
+      hook=hookname() # automatically creates new random .name
+      hook.NewBuy=newbuy # set foreign key, then
+      hook.save()
+            
       try: 
-        checkout=createCoinbaseCheckout(amount=price, metadata=metadata, hook=HOOK2, amount_presets=presets)
+        checkout=createCoinbaseCheckout(amount=price, metadata=metadata, amount_presets=presets,
+                                        hook=hook.name)
       except Exception as e:
-        print "EXCEPTION: ", type(e), e
         answer="Problem. Please tell us: (%s) %s" % (str(type(e)), e)
+        print answer
         return HttpResponse(htmlBodyTags( answer ))
       
-      if dbg: print "checkout.warnings=%s" % checkout.warnings
+      if dbg: print "client.create_checkout.warnings=%s" % checkout.warnings
       # print checkout
       embed_code=checkout["embed_code"]
       

@@ -35,6 +35,8 @@ http://208.68.38.174:8000/buyme/hook/0000000139798743472/
 
     curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/0000000139798743472/  
     curl -X POST -d "name=Andreas%20Krueger&project=buyme" http://208.68.38.174:8000/buyme/hook/5555555555555555555/
+    
+    curl -X POST -d '{"reason":"testing"}' -H "Content-Type: application/json" http://208.68.38.174:8000/buyme/hook/9999999876543765456/
   
 After payment pages:
 
