@@ -1,3 +1,4 @@
+cd ..
 rm buyme -rf
 git clone https://github.com/drandreaskrueger/buyme.git
 cd buyme

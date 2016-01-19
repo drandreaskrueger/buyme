@@ -1,3 +1,4 @@
+cd ../..
 rm buyme_production -rf
 mkdir buyme_production
 cd buyme_production
