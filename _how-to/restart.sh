@@ -1,4 +1,7 @@
-cd ..
+# wget this
+# chmod 700 restart.sh
+# ./restart.sh
+
 rm buyme -rf
 git clone https://github.com/drandreaskrueger/buyme.git
 cd buyme
