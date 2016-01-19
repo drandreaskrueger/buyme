@@ -1,4 +1,5 @@
 # wget this
+# dos2unix restart.sh 
 # chmod 700 restart.sh
 # ./restart.sh
 
