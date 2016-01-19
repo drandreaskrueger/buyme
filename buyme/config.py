@@ -1,6 +1,6 @@
 '''
 @title    buyme ... config.py
-@version: v14
+@version: v15
   
 @summary  configuration, parameters, constants
           adapt this to your needs.
@@ -16,7 +16,7 @@ PRODUCTION=False
 from configPrivate import API_KEY, API_SECRET, API_BACKEND_URL, API_FRONTEND_URL
 from configPrivate import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER 
 
-VERSION="v0.14"
+VERSION="v0.15"
 
 SERVER_IP="208.68.38.174"
 

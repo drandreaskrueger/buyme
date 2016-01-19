@@ -1,4 +1,4 @@
-# buyme v0.14
+# buyme v0.15
 *Coinbase payments made easy.* Django app to buy time with BTC payments. The whole process.
   
 = Learning how to include **Coinbase checkouts**, incl. properly reacting to webhook callback data. 
