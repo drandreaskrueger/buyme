@@ -2,7 +2,7 @@
 # Yes, the filename 'configPrivate.py' is in .gitignore
 # but perhaps there are more secure ways. Tell me, thx.
 
-PRODUCTION=False  
+PRODUCTION=False
 
 # Coinbase API credentials:
 
