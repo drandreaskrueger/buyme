@@ -124,10 +124,11 @@ def ifTrustedCallbackData(request, hookname, dbg):
      etc.  
   """
 
-  p=reaction_saveAsPaid(json.loads(request.body)) 
+  p=reaction_saveAsPaid(json.loads(request.body))
+  if dbg: print "Paid data saved into DB."
   
   r=reaction_sendMeEmail(p, request, hookname, dbg) # alert me that I got money
-  if dbg: print "sending email success = %s" % r
+  if dbg: print "Sending email success = %s" % r
   
   # TODO: Many more reactions are possible.
   #

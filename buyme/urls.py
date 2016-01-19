@@ -25,11 +25,3 @@ urlpatterns = [
     url(r'^thankyou/$', thankYou_URL, name='thankYou'),
     url(r'^cancel/$', cancel_URL, name='cancel'),
 ]
-
-
-
-
-
-
-
-

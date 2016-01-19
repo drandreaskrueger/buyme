@@ -1,6 +1,6 @@
 '''
 @title    buyme ... webhook.py
-@version: v0.09
+@version: v0.14
   
 @summary  hook for coinbase callbacks
 
@@ -48,23 +48,16 @@ def allHooknames():
   return hooks
   
 
-@csrf_exempt  
-# disables the CSRF cookie (Cross Site Request Forgery protection)
-
-def hook_URL(request, hookname, dbg=DEBUG_MESSAGES, DROP_ALL_BUT_POST = False):
-  "URL: receiving webhook, to digest Coinbase answers."
+def canHookDataBeTrusted(request, hookname, dbg=DEBUG_MESSAGES):
+  "checks hookname, IP, signature"
   
-  if dbg: print "Received %s request on 'hook/name' : %s" %(request.method, hookname)
-  
-  if DROP_ALL_BUT_POST and (request.method != 'POST'):
-    answer="How dare you fiddle around here. Go away."
-    return HttpResponseBadRequest(htmlBodyTags(answer))
-
   if (hookname not in allHooknames() ):
-    if dbg: print "(Will later be blocked!) Data arriving on an unrecognized hook: %s" % hookname
+    if dbg: print "Data arriving on an unrecognized hook: %s." % hookname
     trustHook=False
   else:
+    if dbg: print "Hookname recognized."
     trustHook=True 
+  if dbg: print "trustHook=%s" % trustHook
 
   # Did it from Coinbase?
   trustIP=paymentGateway.checkIPcorrect(request.META['REMOTE_ADDR'])
@@ -76,6 +69,23 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES, DROP_ALL_BUT_POST = False):
   trustSig = True # client.verify_callback() broken, see verifyCallbackAuthenticity 
   
   trust = trustIP and trustSig and trustHook
+  
+  return trust
+
+
+@csrf_exempt  
+# disables the CSRF cookie (Cross Site Request Forgery protection)
+
+def hook_URL(request, hookname, dbg=DEBUG_MESSAGES, DROP_ALL_BUT_POST = False):
+  "URL: receiving webhook, to digest Coinbase answers."
+  
+  if dbg: print "Received %s request on /hook/%s/" %(request.method, hookname)
+  
+  if DROP_ALL_BUT_POST and (request.method != 'POST'):
+    answer="How dare you fiddle around here. Go away."
+    return HttpResponseBadRequest(htmlBodyTags(answer))
+
+  trust = canHookDataBeTrusted(request, hookname, dbg=DEBUG_MESSAGES)
    
   # Store all. Regardless. Later switch off? 
   hook_storeCallbackDataIntoDatabase(request, hookname, trust) 
@@ -84,6 +94,7 @@ def hook_URL(request, hookname, dbg=DEBUG_MESSAGES, DROP_ALL_BUT_POST = False):
   if trust: 
     # TODO: Especially if more reactions are added, then this could be done in 
     # its own thread, to be able to quickly answer back to Coinbase: (200, OK)
+    if dbg: print "Request is trusted. Calling reactions:" 
     reactions.ifTrustedCallbackData(request, hookname, dbg)
   
   return HttpResponse(htmlBodyTags( "Thanks." )) # (200, OK)
