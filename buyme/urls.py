@@ -21,7 +21,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', buy_URL, name='buy'),
-    url(r'^hook/(\d+)/$', hook_URL, name='hook'),
+    url(r'^hook/(\w+)/$', hook_URL, name='hook'),
     url(r'^thankyou/$', thankYou_URL, name='thankYou'),
     url(r'^cancel/$', cancel_URL, name='cancel'),
 ]
