@@ -11,7 +11,7 @@
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
 
-PRODUCTION=False
+PRODUCTION=True
 
 from configPrivate import API_KEY, API_SECRET, EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER, API_BACKEND_URL, API_FRONTEND_URL
 
@@ -24,8 +24,8 @@ PRODUCTDESCRIPTION="Let us SKYPE: I can CODE for you, RESEARCH your topics, ANAL
 
 CURRENCY="USD"
 CHOICES=[
-          {"name": "1 second", "price" : 0.04},
-          {"name": "2 seconds", "price" : 0.07},
+          {"name": "1 second", "price" : 0.02},
+          {"name": "5 seconds", "price" : 0.07},
           {"name": "5 minutes", "price" : 9},
           {"name": "15 minutes", "price" : 19},
           {"name": "1 hour", "price" : 60},
