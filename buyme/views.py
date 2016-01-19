@@ -83,7 +83,7 @@ def buy_URL(request, dbg=DEBUG_MESSAGES):
         if dbg: print "checkout.warnings=%" % checkout.warnings
       except Exception as e:
         print "EXCEPTION: ", type(e), e
-        answer="Problem. Please tell us: (%s) %s" % (type(e), e)
+        answer="Problem. Please tell us: (%s) %s" % (str(type(e)), e)
         return HttpResponse(htmlBodyTags( answer ))
       
       # print checkout

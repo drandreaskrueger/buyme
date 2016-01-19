@@ -61,6 +61,7 @@ def createCoinbaseCheckout(amount=59, metadata={"id": 42, "product" : "8 hours"}
   checkout = client.create_checkout(**parameters)
   return checkout
 
+
 def checkIPcorrect(IP, IPpattern=COINBASE_CORRECT_IP, dbg=DEBUG_MESSAGES):
   "callbacks should come from Coinbase"
   if (IP in iptools.IpRangeList(IPpattern)):

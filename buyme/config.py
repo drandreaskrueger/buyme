@@ -22,16 +22,17 @@ PRODUCTDESCRIPTION="Let us SKYPE: I can CODE for you, RESEARCH your topics, ANAL
 
 CURRENCY="USD"
 CHOICES=[
-          #{"name": "15 seconds", "price" : 0.5},
+          {"name": "1 second", "price" : 0.04},
+          {"name": "2 seconds", "price" : 0.07},
           {"name": "5 minutes", "price" : 9},
           {"name": "15 minutes", "price" : 19},
           {"name": "1 hour", "price" : 60},
-          {"name": "4 hours", "price" : 200},
-          {"name": "1 day", "price" : 349},
+          # {"name": "4 hours", "price" : 200},
+          # {"name": "1 day", "price" : 349},
           ]
 SHOW_ALL_PRICES_AGAIN = True # True to show all these prices again in coinbase checkout dialogue 
 
-PRODUCTION=False
+PRODUCTION=True
 DEBUG_MESSAGES=True
 
 # TODO: automatic process, with individualized obfuscated hook names. Until then, change manually:
