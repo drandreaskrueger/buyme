@@ -27,9 +27,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ab%z5!cfg$x=!(-tttttt*=-8@$m=@t)@=erterr13^g^1*ee('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -113,13 +113,11 @@ STATIC_URL = '/static/'
 PRODUCTION=True
 
 if PRODUCTION:
-  ALLOWED_HOSTS = ['208.68.38.174'] # ["208.68.38.174"]
+  ALLOWED_HOSTS = ['208.68.38.174'] # ["*"]
   DEBUG = False
-  import loggingDebug
-  LOGGING=loggingDebug.LOGGING
-else:
-  DEBUG = True
-  ALLOWED_HOSTS = []
+  
+  import loggingDebug # to find the coinbase bug, see 'BUG_invalid-HTTP_HOST-header.md'
+  LOGGING=loggingDebug.LOGGING_level('DEBUG')
   
 
 # sending email:
