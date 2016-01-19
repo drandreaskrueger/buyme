@@ -1,6 +1,6 @@
 '''
 @title    buyme ... config.py
-@version: v10
+@version: v11
   
 @summary  configuration, parameters, constants
           adapt this to your needs.
@@ -13,9 +13,9 @@
 
 PRODUCTION=False
 
-from configPrivate import API_KEY, API_SECRET, EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER
+from configPrivate import API_KEY, API_SECRET, EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER, API_BACKEND_URL, API_FRONTEND_URL
 
-VERSION="v0.10"
+VERSION="v0.11"
 
 SERVER_IP="208.68.38.174"
 
@@ -52,10 +52,6 @@ STYLE=("ul.errorlist {list-style-type: none; display:inline; margin-left: 0; pad
 ######################################################
 
 APPNAME="buyme"
-
-SANDBOX_URLS = ('https://api.sandbox.coinbase.com', 'https://sandbox.coinbase.com')
-PRODUCTION_URLS=(      'https://api.coinbase.com' , 'https://coinbase.com')
-API_BACKEND_URL,API_FRONTEND_URL=PRODUCTION_URLS if PRODUCTION else SANDBOX_URLS 
 
 COINBASE_CORRECT_IP="54.175.255.192/27"
 
