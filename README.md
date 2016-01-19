@@ -50,5 +50,5 @@ See [_how-to/README.md](_how-to/README.md) for diagrams, and manuals.
 
 ## donation ware!
 (C) 2016 Andreas Krueger  
-If you like this, show it: [BTC] 1NvfRSDzXmwUdTjeqN8MAfmPCNHgwB8eiC  
+If you like this, show it: [BTC] 1JjSXcUKEmZGTvdC9BGbM6RrkGVdApape5  
   

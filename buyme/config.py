@@ -6,7 +6,7 @@
           adapt this to your needs.
   
 @license:   (C) 2016 Andreas Krueger
-@attention: If you like this, show it: [BTC] 1NvfRSDzXmwUdTjeqN8MAfmPCNHgwB8eiC  
+@attention: If you like this, show it: [BTC] 1JjSXcUKEmZGTvdC9BGbM6RrkGVdApape5  
 @since      Created on 13 Jan 2016
 @author:    Andreas Krueger  - github.com/drandreaskrueger/buyme
 '''
