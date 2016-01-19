@@ -1,4 +1,4 @@
-# wget this
+# wget https://raw.githubusercontent.com/drandreaskrueger/buyme/master/_how-to/restart.sh
 # dos2unix restart.sh 
 # chmod 700 restart.sh
 # ./restart.sh
