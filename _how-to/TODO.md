@@ -26,9 +26,8 @@ I'd like it better to keep incoming money in one *dedicated account* **per app**
 #### Security API_SECRET
 The file [configPrivate.py](../buyme/configPrivate.py) is not the ideal place for the API_SECRET, and the EMAIL_USER_PASSWORD.
 
-One problem is that it might accidentially get uploaded to git. I have already put it in .gitignore, but even then, it happened, somehow.  When you have input your own credentials, you can remove it from the git index:
+One problem is that it might accidentally get uploaded to git. I have already put it in .gitignore, but even then, it happened, somehow.  Perhaps this helps:
  
-    git rm buyme/configPrivate.py --cached
     git update-index --assume-unchanged buyme/configPrivate.py
     
 But that is not the final say in security. Where to best store sensitive data?
