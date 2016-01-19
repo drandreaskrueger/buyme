@@ -1,3 +1,4 @@
+rm buyme_production -rf
 mkdir buyme_production
 cd buyme_production
 git clone -b production https://github.com/drandreaskrueger/buyme.git
