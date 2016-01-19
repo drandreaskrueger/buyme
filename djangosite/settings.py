@@ -110,15 +110,14 @@ STATIC_URL = '/static/'
 # All the above was generated automatically by django-admin.
 # Only this was added by me:
 
-PRODUCTION=True
+PRODUCTION=False
 
 if PRODUCTION:
   ALLOWED_HOSTS = ['208.68.38.174'] # ["*"]
   DEBUG = False
-  
-  import loggingDebug # to find the coinbase bug, see 'BUG_invalid-HTTP_HOST-header.md'
+  # to find the nasty coinbase bug, see 'BUG_invalid-HTTP_HOST-header.md'
+  import loggingDebug 
   LOGGING=loggingDebug.LOGGING_level('DEBUG')
-  
 
 # sending email:
 EMAIL_HOST="smtp.gmail.com"
@@ -131,8 +130,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static", "djangosite")
 INSTALLED_APPS=list(INSTALLED_APPS)
 INSTALLED_APPS.append('buyme')
 INSTALLED_APPS=tuple(INSTALLED_APPS)
-
-
 
 
 ########################################################

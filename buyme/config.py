@@ -13,9 +13,10 @@
 
 PRODUCTION=False
 
-from configPrivate import API_KEY, API_SECRET, EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER, API_BACKEND_URL, API_FRONTEND_URL
+from configPrivate import API_KEY, API_SECRET, API_BACKEND_URL, API_FRONTEND_URL
+from configPrivate import EMAIL_ALERT_ME, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_SENDER 
 
-VERSION="v0.11"
+VERSION="v0.12"
 
 SERVER_IP="208.68.38.174"
 
@@ -24,19 +25,17 @@ PRODUCTDESCRIPTION="Let us SKYPE: I can CODE for you, RESEARCH your topics, ANAL
 
 CURRENCY="USD"
 CHOICES=[
-          {"name": "1 second", "price" : 0.04},
-          {"name": "5 seconds", "price" : 0.07},
           {"name": "5 minutes", "price" : 9},
           {"name": "15 minutes", "price" : 19},
           {"name": "1 hour", "price" : 60},
-          # {"name": "4 hours", "price" : 200},
-          # {"name": "1 day", "price" : 349},
+          {"name": "4 hours", "price" : 200},
+          {"name": "1 day", "price" : 349},
           ]
 SHOW_ALL_PRICES_AGAIN = True # True to show all these prices again in coinbase checkout dialogue 
 
-DEBUG_MESSAGES=True
+DEBUG_MESSAGES=True # logging 
 
-# TODO: automatic process, with individualized obfuscated hook names. Until then, change manually:
+# TODO: Individualized obfuscated hook names. Until then, change manually:
 HOOK1 = "0000000847283492041" # set when API key created https://sandbox.coinbase.com/settings/api
 HOOK2 = "9999999876543765456" # set in individual checkout. Only this seems to work, the above not. 
 HOOKS = (HOOK1, HOOK2) 
@@ -74,10 +73,12 @@ else:
               ' testing and development purposes; all BTC values are testnet.</div>')
   SERVER_OTHER_NAME, SERVER_OTHER="mainnet", "http://%s:8001" % SERVER_IP
   SENTENCE="This uses testnet3 money. Go to the '%s' version, to spend real money, and buy real time from me."
+  SENTENCE="" # No production version! First coinbase has to fix the wrong-http_host-header-bug.
   
 OTHER_VERSION_HTML=""
 if SENTENCE!="":
   OTHER_VERSION_HTML=SENTENCE % ('<a href="%s" target="_blank">%s</a>' % (SERVER_OTHER, SERVER_OTHER_NAME))
   OTHER_VERSION_HTML="<small>"+OTHER_VERSION_HTML+"</small>"
+  
 
 SERVER="http://%s:%s" % (SERVER_IP, SERVER_PORT) # TODO: https
