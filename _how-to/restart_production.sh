@@ -1,4 +1,7 @@
-cd ../..
+# wget this
+# chmod 700 restart_production.sh
+# ./restart_production.sh
+
 rm buyme_production -rf
 mkdir buyme_production
 cd buyme_production
