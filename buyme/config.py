@@ -24,7 +24,7 @@ PRODUCTDESCRIPTION="Let us SKYPE: I can CODE for you, RESEARCH your topics, ANAL
 
 CURRENCY="USD"
 CHOICES=[
-          {"name": "1 second", "price" : 0.03},
+          {"name": "1 second", "price" : 0.04},
           {"name": "5 seconds", "price" : 0.07},
           {"name": "5 minutes", "price" : 9},
           {"name": "15 minutes", "price" : 19},
