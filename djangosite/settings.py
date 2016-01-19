@@ -110,7 +110,7 @@ STATIC_URL = '/static/'
 # All the above was generated automatically by django-admin.
 # Only this was added by me:
 
-PRODUCTION=False
+PRODUCTION=True
 
 if PRODUCTION:
   ALLOWED_HOSTS = ["*"] # ["208.68.38.174"]
