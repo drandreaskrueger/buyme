@@ -3,6 +3,7 @@
 
 # API secret:
 configPrivate.py
+buyme/configPrivate.py
 configPrivate_ME.py
 configPrivate_EMPTY.py
 
