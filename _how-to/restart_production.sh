@@ -4,13 +4,23 @@
 # ./restart_production.sh
 
 rm buyme_production -rf
+
 mkdir buyme_production
 cd buyme_production
+
 git clone -b production https://github.com/drandreaskrueger/buyme.git
 cd buyme
+
 python manage.py makemigrations buyme
 python manage.py migrate
 python manage.py collectstatic
 python manage.py createsuperuser
-python manage.py runserver --insecure 0.0.0.0:8001
+
+git update-index --assume-unchanged buyme/configPrivate.py
+
+echo .
+echo . You must edit configPrivate.py and then start the server:
+echo . nano buyme/configPrivate.py
+echo . python manage.py runserver 0.0.0.0:8001
+echo .
 
