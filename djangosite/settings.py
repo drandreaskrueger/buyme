@@ -113,8 +113,9 @@ STATIC_URL = '/static/'
 PRODUCTION=True
 
 if PRODUCTION:
-  ALLOWED_HOSTS = ['208.68.38.174', '*', '208.68.38.174:8000'] # ["208.68.38.174"]
+  ALLOWED_HOSTS = ['208.68.38.174'] # ["208.68.38.174"]
   DEBUG = False
+  import loggingDebug
 else:
   DEBUG = True
   ALLOWED_HOSTS = []
@@ -133,24 +134,7 @@ INSTALLED_APPS.append('buyme')
 INSTALLED_APPS=tuple(INSTALLED_APPS)
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        },
-    },
-}
-import logging
-import logging.config
-logging.config.dictConfig(LOGGING)
+
 
 ########################################################
 
