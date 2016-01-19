@@ -27,9 +27,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ab%z5!cfg$x=!(-tttttt*=-8@$m=@t)@=erterr13^g^1*ee('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -113,8 +113,12 @@ STATIC_URL = '/static/'
 PRODUCTION=True
 
 if PRODUCTION:
-  ALLOWED_HOSTS = ['208.68.38.174', '*'] # ["208.68.38.174"]
+  ALLOWED_HOSTS = ['208.68.38.174', '*', '208.68.38.174:8000'] # ["208.68.38.174"]
   DEBUG = False
+else:
+  DEBUG = True
+  ALLOWED_HOSTS = []
+  
 
 # sending email:
 EMAIL_HOST="smtp.gmail.com"
@@ -126,6 +130,27 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static", "djangosite")
 # register the app:
 INSTALLED_APPS=list(INSTALLED_APPS)
 INSTALLED_APPS.append('buyme')
+INSTALLED_APPS=tuple(INSTALLED_APPS)
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
+import logging
+import logging.config
+logging.config.dictConfig(LOGGING)
 
 ########################################################
 
