@@ -116,6 +116,7 @@ if PRODUCTION:
   ALLOWED_HOSTS = ['208.68.38.174'] # ["208.68.38.174"]
   DEBUG = False
   import loggingDebug
+  LOGGING=loggingDebug.LOGGING
 else:
   DEBUG = True
   ALLOWED_HOSTS = []

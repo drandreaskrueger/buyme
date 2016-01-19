@@ -15,8 +15,8 @@ LOGGING = {
         },
     },
 }
-import logging
-import logging.config
-logging.config.dictConfig(LOGGING)
+#import logging
+#import logging.config
+#logging.config.dictConfig(LOGGING)
 
 print "logging level set to %s" % LEVEL
