@@ -75,8 +75,8 @@ class newBuyForm(ModelForm):
                'message': forms.Textarea (attrs = {'cols':'31', 'rows':'3'} )}
     
 def randName(length=HOOKNAME_LENGTH):
-  fromSet=string.lowercase[:26] + string.digits[0:10]
-  return "".join([random.choice(fromSet) for _ in range(length)])
+  fromSet=string.lowercase + string.digits
+  return ''.join(random.sample(fromSet, length))
 
     
 class hookname(models.Model):
