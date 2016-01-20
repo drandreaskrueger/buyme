@@ -9,7 +9,7 @@
 
 (2) Get a free [coinbase sandbox](https://sandbox.coinbase.com/) account to pay with testnet3 coins. 
 
-(3) BACKEND: http://208.68.38.174:8000/admin (user: tester, password: tipmeplease)
+(3) BACKEND: http://208.68.38.174:8000/admin (**user:** tester, **password:** tipmeplease)
 
 *Or* see [output/](output/) for some screenshots & logfiles.
 
@@ -44,7 +44,7 @@ Run server:
 Open in browser (change to your IP address):
 
 * http://208.68.38.174:8000/buyme = the app
-* http://208.68.38.174:8000/admin = admin pages for the DB
+* http://208.68.38.174:8000/admin = admin pages for the DB (**user:** tester, **password:** tipmeplease)
     
 ## More information:
 [![diagrams and more](_how-to/img/thumbs.png)](_how-to/README.md)

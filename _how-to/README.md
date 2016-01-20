@@ -19,6 +19,7 @@ Output:
 * [output/README.md](../output/README.md) = notifications, emails, and screenshots of /admin/ pages 
 
 ## Diagrams
+TODO: Add the novelties of v0.15 ... 
 
 ### Python modules 
 ![modules](img/scheme_pyreverse_buyme.png)
