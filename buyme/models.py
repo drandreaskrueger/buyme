@@ -76,7 +76,7 @@ class newBuyForm(ModelForm):
     
 def randName(length=HOOKNAME_LENGTH):
   fromSet=string.lowercase + string.digits
-  return ''.join(random.sample(fromSet, length))
+  return "".join([random.choice(fromSet) for _ in range(length)])
 
     
 class hookname(models.Model):
