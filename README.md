@@ -61,4 +61,5 @@ See [_how-to/README.md](_how-to/README.md) for diagrams, and manuals.
 (*) = MUST EDIT. Keep everything else unchanged, for a starter.
 ## donation ware!
 (C) 2016 Andreas Krueger  
-If you like this, show it: [BTC] 1JjSXcUKEmZGTvdC9BGbM6RrkGVdApape5  
+**If you like this, show it:** [BTC] [1JjSXcUKEmZGTvdC9BGbM6RrkGVdApape5](http://blockr.io/address/info/1JjSXcUKEmZGTvdC9BGbM6RrkGVdApape5)   
+No Coinbase account yet? Please [use my referral](https://www.coinbase.com/join/andreaskrueger), to give me and you 10$ bonus.  
