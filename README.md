@@ -61,7 +61,17 @@ See [_how-to/README.md](_how-to/README.md) for diagrams, and manuals.
 (*) = MUST EDIT. Keep everything else unchanged, for a starter.
 
 ## BUG
-There is a [bug in the coinbase notification system](https://github.com/drandreaskrueger/coinbaseTestbed/blob/master/bugs/HOST-header_empty.md) which prevents Django from accepting notification POST requests from coinbase, as they do not comply with RFC 1034/1035. I have already reported that bug in several places, e.g. [here](https://hackerone.com/reports/113936). Until that is fixed, you must not switch djangosite-->settings.py ``DEBUG = False`` ([line 30](https://github.com/drandreaskrueger/buyme/blob/master/djangosite/settings.py#L30), and in my edits in [line 117](https://github.com/drandreaskrueger/buyme/blob/master/djangosite/settings.py#L117)). With ``DEBUG=True`` Django is more sloppy with faulty requests, seemingly.
+There is a [bug in the coinbase notification system](https://github.com/drandreaskrueger/coinbaseTestbed/blob/master/bugs/HOST-header_empty.md) which prevents Django from accepting notification POST requests from coinbase, as they do not comply with RFC 1034/1035. I have already reported that bug in several places, e.g. [here](https://hackerone.com/reports/113936). 
+
+Until that is fixed, you must not switch djangosite-->settings.py ``DEBUG = False`` ([line 30](https://github.com/drandreaskrueger/buyme/blob/master/djangosite/settings.py#L30), and in my edits in [line 117](https://github.com/drandreaskrueger/buyme/blob/master/djangosite/settings.py#L117)).  
+
+With ``DEBUG=True`` Django is more sloppy with faulty requests, seemingly. But the [official Django code](https://github.com/django/django/blob/master/django/conf/project_template/project_name/settings.py-tpl#L25-L26) **strongly warns against that**:
+
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+    
+So ... the current Coinbase system forces you to violate essential Django security. TL;DR: Do not run in production - until Coinbase has fixed this. 
+
 
 ## Time estimates
 Using my new tool [FiledatePunchcard](https://github.com/drandreaskrueger/FiledatePunchcard) to give a rough estimate of the time that I have invested into this. 
