@@ -70,7 +70,9 @@ With ``DEBUG=True`` Django is more sloppy with faulty requests, seemingly. But t
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
     
-So ... the current Coinbase system forces you to violate essential Django security. TL;DR: Do not run in production - until Coinbase has fixed this. 
+So ... the current Coinbase system forces you to violate essential Django security. 
+
+**TL;DR:** Do not run in production - until Coinbase has fixed this. 
 
 
 ## Time estimates
