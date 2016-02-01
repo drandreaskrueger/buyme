@@ -1,4 +1,4 @@
-# buyme v0.15
+# buyme v0.16
 *Coinbase payments made easy.* Django app to buy time with BTC payments. The whole process.
   
 = Learning how to include **Coinbase checkouts**, incl. properly reacting to webhook callback data. 
@@ -59,7 +59,47 @@ See [_how-to/README.md](_how-to/README.md) for diagrams, and manuals.
 * [djangosite/settings.py](djangosite/settings.py) = django project which loads the app
 
 (*) = MUST EDIT. Keep everything else unchanged, for a starter.
+
+## BUG
+There is a [bug in the coinbase notification system](https://github.com/drandreaskrueger/coinbaseTestbed/blob/master/bugs/HOST-header_empty.md) which prevents Django from accepting notification POST requests from coinbase, as they do not comply with RFC 1034/1035. I have already reported that bug in several places, e.g. [here](https://hackerone.com/reports/113936). Until that is fixed, you must not switch djangosite-->settings.py ``DEBUG = False`` ([line 30](https://github.com/drandreaskrueger/buyme/blob/master/djangosite/settings.py#L30), and in my edits in [line 117](https://github.com/drandreaskrueger/buyme/blob/master/djangosite/settings.py#L117)). With ``DEBUG=True`` Django is more sloppy with faulty requests, seemingly.
+
+## Time estimates
+Using my new tool [FiledatePunchcard](https://github.com/drandreaskrueger/FiledatePunchcard) to give a rough estimate of the time that I have invested into this. 
+
+    Each 'x' represents a 30 minute block:
+    (Filled up blocks of size 6, i.e. approx 180 minutes.)
+    
+    2016-01-13|----------------------------------------x       |
+    2016-01-14|                        x         x             |
+    2016-01-15|                         xxxxxxxxxxxxxxxxxxxxx  |
+    2016-01-16|                                                |
+    2016-01-17|                             xxxxxxxxxxxxxxxxx  |
+    2016-01-18|               xxxxxxxxxxxxxxxxxxxxxxxxx        |
+    2016-01-19|            xxxxxxxxxxxxxxxxxx                  |
+    2016-01-20|                         xxx               x    |
+    2016-01-21|                                                |
+    2016-01-22|                                                |
+    2016-01-23|                                                |
+    2016-01-24|                                                |
+    2016-01-25|                                                |
+    2016-01-26|                                    xxxxxxx     |
+    2016-01-27|                                                |
+    2016-01-28|                                                |
+    2016-01-29|                                                |
+    2016-01-30|                                                |
+    2016-01-31|                                                |
+    2016-02-01|                                           x----|
+    
+    With 30-minute blocks, the number of hours is approx 48.0
+
+Probably more, because the above is only registering filedates, which are overwritten with each (non-committed) file saving. 
+
+
 ## donation ware!
 (C) 2016 Andreas Krueger  
 **If you like this, show it:** [BTC] [1JjSXcUKEmZGTvdC9BGbM6RrkGVdApape5](http://blockr.io/address/info/1JjSXcUKEmZGTvdC9BGbM6RrkGVdApape5)   
-No Coinbase account yet? Please [use my referral](https://www.coinbase.com/join/andreaskrueger), to give me and you 10$ bonus.  
+No Coinbase account yet? Please [use my referral](https://www.coinbase.com/join/andreaskrueger), to give me and you 10$ bonus.
+
+## Hire me
+hire (at) andreaskrueger (dot) de
+  
