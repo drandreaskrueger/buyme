@@ -77,7 +77,7 @@ def verifyCallbackAuthenticity(request):
   
   verify_callback() IS BROKEN!
   See 
-  https://github.com/drandreaskrueger/coinbaseTestbed/blob/master/output/BUGS_verify_callback.md
+  https://github.com/drandreaskrueger/coinbaseTestbed/blob/master/bugs/verify_callback()_False.md
   
   """
  

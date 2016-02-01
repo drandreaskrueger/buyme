@@ -115,7 +115,7 @@ PRODUCTION=False
 if PRODUCTION:
   ALLOWED_HOSTS = ['208.68.38.174'] # ["*"]
   DEBUG = False
-  # to find the nasty coinbase bug, see 'BUG_invalid-HTTP_HOST-header.md'
+  # to find the nasty coinbase bug, see 'HOST-header_empty.md'
   import loggingDebug 
   LOGGING=loggingDebug.LOGGING_level('DEBUG')
 
